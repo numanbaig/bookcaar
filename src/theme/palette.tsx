@@ -2,7 +2,7 @@
 const mode = "light"
 export default {
         primary: {
-          main: "#f05a28",
+          main: "#09A391",
           contrastText: "#fff",
         },
         grey: {
