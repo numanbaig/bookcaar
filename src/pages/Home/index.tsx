@@ -23,7 +23,7 @@ const Home = () => {
         </Box>
       </section>
     <section style={{position: "relative"}}>
-    <Box sx={{position: "absolute"}}><SearchBox/></Box>
+    {/* <Box sx={{position: "absolute"}}><SearchBox/></Box> */}
     </section>
     </Container>
   );
