@@ -1,6 +1,6 @@
 import { styled } from "@mui/system";
-import {opacityColors} from '../../theme/opacityColors'
-import {themeShadows} from '../../theme/shadows'
+import { opacityColors } from "../../theme/opacityColors";
+import { themeShadows } from "../../theme/shadows";
 
 export const LayoutContainer = styled("div")(({ theme }) => ({
   display: "flex",
@@ -9,7 +9,7 @@ export const LayoutContainer = styled("div")(({ theme }) => ({
   padding: "1.5rem 20px",
   color: theme.palette.white,
   background: opacityColors().z1,
-  boxShadow:themeShadows().primary,
+  boxShadow: themeShadows().primary,
   height: "30px",
   width: "100%",
   position: "fixed",
