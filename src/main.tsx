@@ -7,7 +7,7 @@ import { ThemeProvider } from '@mui/material'
 import { Provider } from "react-redux"
 import { store } from "./store"
 import { initializeApp } from "firebase/app";
-
+import { BrowserRouter } from 'react-router-dom'
 const firebaseConfig = {
   apiKey: import.meta.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: import.meta.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -21,11 +21,11 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+  <BrowserRouter>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
     </Provider>
-  </React.StrictMode>
+  </BrowserRouter>
 )

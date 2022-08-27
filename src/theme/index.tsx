@@ -1,6 +1,6 @@
 import palette from "./palette"
-import {opacityColors} from './opacityColors'
-import {themeShadows} from "./shadows"
+import { opacityColors } from './opacityColors'
+import { themeShadows } from "./shadows"
 import { createTheme } from "@mui/material"
 
 export default createTheme({
