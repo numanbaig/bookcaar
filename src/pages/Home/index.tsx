@@ -1,5 +1,6 @@
 import { Box, Container } from "@mui/material";
 import Hunza from "../../assets/videos/hunza.mp4";
+import SearchBox from "../Searchbar/index"
 
 const Home = () => {
   return (
@@ -14,24 +15,16 @@ const Home = () => {
             style={{
               width: "100%",
               position: "absolute",
-              top: "-87px",
+              top: "-90px",
               zIndex: "-1",
             }}
           />
-          {/* <video
-            src={Naltar}
-            autoPlay
-            muted
-            // loop
-            style={{
-              width: "100%",
-              position: "absolute",
-              top: "-87px",
-              zIndex: "-1",
-            }}
-          /> */}
+         
         </Box>
       </section>
+    <section style={{position: "relative"}}>
+    <Box sx={{position: "absolute"}}><SearchBox/></Box>
+    </section>
     </Container>
   );
 };

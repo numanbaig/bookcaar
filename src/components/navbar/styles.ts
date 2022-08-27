@@ -8,7 +8,7 @@ export const LayoutContainer = styled("div")(({ theme }) => ({
   color: theme.palette.white,
   background: theme.palette.gradient,
   height: "30px",
-  width: "calc(100% - 40px)",
+  width: "100%",
   backgroundColor: "transparent",
   position: "fixed",
   "&:hover": {

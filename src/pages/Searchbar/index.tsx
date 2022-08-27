@@ -40,9 +40,6 @@ function Index() {
   };
   return (
     <Box width="100%" height="80vh" position={"relative"}>
-      <video width="100%" height="100%">
-        <source src={"public/homeVideo.mp4"} type="video/mp4" />
-      </video>
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <SearchBar>
           <Stack
