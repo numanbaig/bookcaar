@@ -1,18 +1,20 @@
 import { styled } from "@mui/system";
+import { opacityColors } from "../../theme/opacityColors";
+import { themeShadows } from "../../theme/shadows";
 
 export const LayoutContainer = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  padding: "10px 20px",
+  padding: "1.5rem 20px",
   color: theme.palette.white,
-  background: theme.palette.gradient,
+  background: opacityColors().z1,
+  boxShadow: themeShadows().primary,
   height: "30px",
-  width: "calc(100% - 40px)",
-  backgroundColor: "transparent",
+  width: "100%",
   position: "fixed",
   "&:hover": {
-    backgroundColor: theme.palette.primary.main,
+    background: themeShadows().z28,
   },
 }));
 

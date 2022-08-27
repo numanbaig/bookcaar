@@ -1,10 +1,11 @@
 import { Box, Container } from "@mui/material";
 import Hunza from "../../assets/videos/hunza.mp4";
+import SearchBox from "../Searchbar/index";
 
 const Home = () => {
   return (
     <Container maxWidth={false} disableGutters>
-      <section>
+      <section style={{ height: "100vh" }}>
         <Box sx={{ position: "relative" }}>
           <video
             src={Hunza}
@@ -14,24 +15,24 @@ const Home = () => {
             style={{
               width: "100%",
               position: "absolute",
-              top: "-87px",
+              top: "-90px",
               zIndex: "-1",
             }}
           />
-          {/* <video
-            src={Naltar}
-            autoPlay
-            muted
-            // loop
-            style={{
-              width: "100%",
-              position: "absolute",
-              top: "-87px",
-              zIndex: "-1",
-            }}
-          /> */}
         </Box>
       </section>
+      <section>
+        <Box
+          sx={{
+            background: "#fff",
+            position: "relative",
+            top: "-165px",
+          }}
+        >
+          <SearchBox />
+        </Box>
+      </section>
+      <section style={{ position: "relative" }}></section>
     </Container>
   );
 };
