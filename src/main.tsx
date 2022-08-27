@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import theme from "./theme"
 import App from './App'
 import './index.css'
+import { ThemeProvider } from '@mui/material'
 import { Provider } from "react-redux"
 import { store } from "./store"
 import { initializeApp } from "firebase/app";
@@ -21,7 +23,9 @@ initializeApp(firebaseConfig);
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 )
