@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import { AppRoutes } from './routes';
+import Typography from '@mui/material/Typography';
 
 function App() {
 
