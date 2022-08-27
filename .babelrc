@@ -1,0 +1,22 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@actionTypes": "./src/store/actions/",
+          "@components": "./src/components/",
+          "@utils": "./src/utils",
+          "@hooks": "./src/hooks/",
+          "@assets": "./src/assets/",
+          "@pages": "./src/pages",
+          "@apis": "./src/store/apis/",
+          "@store_helpers": "./src/store/helpers/",
+          "@slices": "./src/store/slices/",
+          "@services": "./src/store/services/"
+        }
+      }
+    ]
+  ]
+}

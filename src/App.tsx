@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
-import Typography from '@mui/material/Typography';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
@@ -25,11 +24,11 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <Typography variant='h3'>
+      <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </Typography>
+      </p>
     </div>
   )
 }
 
-export default App
+export default App;
