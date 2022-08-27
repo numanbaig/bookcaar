@@ -7,7 +7,9 @@ export const SearchBar = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
   padding:"1.5em",
   maxWidth:"80%",
+  position:"relative",
+  zIndex:"999",
   borderRadius: theme.shape.borderRadius,
-  boxShadow:themeShadows().info,
+  boxShadow:themeShadows().z12,
   margin:'0px auto',
 }));
