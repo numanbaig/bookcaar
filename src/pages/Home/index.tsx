@@ -1,8 +1,8 @@
 import { Box, Container, Typography, Grid } from "@mui/material";
 import Hunza from "../../assets/videos/hunza.mp4";
 import SearchBox from "../Searchbar/index";
-import MediaCard from "../../components/card";
-import landcruser from "../../assets/images/v8.webp";
+import Carousel from "../carousel/index";
+import WaveSvg from "../../assets/spaceremove.svg";
 
 const Home = () => {
   return (
@@ -32,33 +32,16 @@ const Home = () => {
           py={5}
         >
           <SearchBox />
+          <img
+            src={WaveSvg}
+            className="logo"
+            alt="Vite logo"
+            style={{ position: "absolute", top: "-40px" }}
+          />
         </Box>
       </section>
-      <section>
-        <Box sx={{ background: "#fff" }}>
-          <Typography
-            variant="h4"
-            color="primary"
-            textAlign="center"
-            fontWeight="700"
-          >
-            Type of Car you can book
-          </Typography>
-          <Grid container spacing={1}>
-            <Grid item md={3}>
-              <MediaCard image={landcruser} />
-            </Grid>
-            <Grid item md={3}>
-              <MediaCard image={landcruser} />
-            </Grid>
-            <Grid item md={3}>
-              <MediaCard image={landcruser} />
-            </Grid>
-            <Grid item md={3}>
-              <MediaCard image={landcruser} />
-            </Grid>
-          </Grid>
-        </Box>
+      <section style={{ background: "#fff" }}>
+        <Carousel />
       </section>
     </Container>
   );
