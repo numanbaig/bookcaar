@@ -1,11 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import theme from "./theme"
-import App from './App'
-import './index.css'
-import { ThemeProvider } from '@mui/material'
-import { Provider } from "react-redux"
-import { store } from "./store"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import theme from "./theme";
+import App from "./App";
+import "./index.css";
+import { ThemeProvider } from "@mui/material";
+import { Provider } from "react-redux";
+import { store } from "./store";
 import { initializeApp } from "firebase/app";
 import { BrowserRouter } from 'react-router-dom'
 const firebaseConfig = {
@@ -15,7 +15,7 @@ const firebaseConfig = {
   storageBucket: import.meta.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: import.meta.env.REACT_APP_MEASUREMENT_ID
+  measurementId: import.meta.env.REACT_APP_MEASUREMENT_ID,
 };
 
 initializeApp(firebaseConfig);
