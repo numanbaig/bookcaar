@@ -1,11 +1,11 @@
 import { Box, Container } from "@mui/material";
 import Hunza from "../../assets/videos/hunza.mp4";
-import SearchBox from "../Searchbar/index"
+import SearchBox from "../Searchbar/index";
 
 const Home = () => {
   return (
     <Container maxWidth={false} disableGutters>
-      <section>
+      <section style={{ height: "100vh" }}>
         <Box sx={{ position: "relative" }}>
           <video
             src={Hunza}
@@ -19,7 +19,6 @@ const Home = () => {
               zIndex: "-1",
             }}
           />
-
         </Box>
       </section>
       <section>
@@ -33,8 +32,7 @@ const Home = () => {
           <SearchBox />
         </Box>
       </section>
-      <section style={{ position: "relative" }}></section>
-    </Container>
+    </Container >
   );
 };
 

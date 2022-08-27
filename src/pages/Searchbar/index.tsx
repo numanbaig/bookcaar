@@ -39,7 +39,7 @@ function Index() {
     setRideTime((event.target as HTMLInputElement).value);
   };
   return (
-    <Box width="100%" height="80vh" position={"relative"}>
+    <Box position={"relative"} top={"-100px"}>
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <SearchBar>
           <Stack
@@ -110,14 +110,13 @@ function Index() {
               </RadioGroup>
             </FormControl>
           </Stack>
-          <Box maxWidth="25%" mt='1rem' mx='auto'>
+          <Box maxWidth="25%" mt="1rem" mx="auto">
             <Button
               variant="contained"
-              sx={{ textTransform: "none", height:'3rem',fontWeight:700}}
+              sx={{ textTransform: "none", height: "3rem", fontWeight: 700 }}
               fullWidth
             >
-              <Typography variant='h6'>Search</Typography>
-              
+              <Typography variant="h6">Search</Typography>
             </Button>
           </Box>
         </SearchBar>
