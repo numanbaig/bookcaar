@@ -32,8 +32,7 @@ const Home = () => {
           <SearchBox />
         </Box>
       </section>
-      <section style={{ position: "relative" }}></section>
-    </Container>
+    </Container >
   );
 };
 
