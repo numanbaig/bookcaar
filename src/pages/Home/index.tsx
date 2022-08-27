@@ -1,6 +1,7 @@
 import { Box, Container } from "@mui/material";
 import Hunza from "../../assets/videos/hunza.mp4";
 import SearchBox from "../Searchbar/index";
+import Carousel from '../carousel/index'
 
 const Home = () => {
   return (
@@ -32,7 +33,8 @@ const Home = () => {
           <SearchBox />
         </Box>
       </section>
-    </Container >
+      <Box><Carousel/></Box>
+    </Container>
   );
 };
 

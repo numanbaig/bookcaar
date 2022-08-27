@@ -28,7 +28,6 @@ const Navbar = () => {
                     color: "#fff",
                     "&:hover": {
                       color: theme.palette.primary.main,
-                      fontSize: "1.2rem",
                     },
                   }}
                   variant="body1"
