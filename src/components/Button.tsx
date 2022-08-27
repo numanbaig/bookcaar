@@ -13,6 +13,7 @@ export type ButtonProps = {
     tooltip?: string
     icon?: ReactNode
     sx?: SxProps<Theme>
+    type?: string
 } & Omit<MuiButtonProps, 'size'>
 
 /*
@@ -97,6 +98,7 @@ const Button = (props: React.PropsWithChildren<ButtonProps>) => {
             onClick={onClick}
             startIcon={icon}
             endIcon={endIcon}
+            type={props.type}
         >
             {
                 !!tooltip ? (
