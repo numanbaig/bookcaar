@@ -16,6 +16,7 @@ export const LayoutContainer = styled("div")(({ theme }) => ({
   "&:hover": {
     background: themeShadows().z28,
   },
+  zIndex: "999999",
 }));
 
 export const MoreMenu = styled("div")(({ theme }) => ({
