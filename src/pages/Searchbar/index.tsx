@@ -39,7 +39,7 @@ function Index() {
     setRideTime((event.target as HTMLInputElement).value);
   };
   return (
-    <Box>
+    <Box position={"relative"} top={"-8rem"}>
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <SearchBar>
           <Stack
