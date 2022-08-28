@@ -26,6 +26,8 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { Formik } from "formik";
 import * as yup from "yup";
 import moment from "moment";
+import { store } from "../../store";
+import {requestRide} from "../../store/services/RequestRide"
 
 function Index() {
   const [value, setValue] = useState("2014-08-18T21:11:54");
@@ -63,7 +65,7 @@ function Index() {
   const [rideTime, setRideTime] = React.useState("Per Day");
 
   function HandleFormSubmit(values: any) {
-    console.log(values, "valuessss");
+    store.dispatch(requestRide(values));
   }
 
   const handelTraveltime = (event: React.ChangeEvent<HTMLInputElement>) => {
