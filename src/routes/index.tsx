@@ -2,18 +2,17 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "../pages/Home";
 import Bids from "../pages/Bids";
 import Private from "./PrivateGuard";
-import Layout from "../components/layout";
-import Chat from "../pages/Chat"
-import Register from '../pages/Auth/Register'
-import Login from '../pages/Auth/Login'
+import Navbar from "../components/navbar";
+import Chat from "../pages/Chat";
+import Register from "../pages/Auth/Register";
+import Login from "../pages/Auth/Login";
 const AppRoutes = () => {
   return (
     <Router>
+      <Navbar />
       <Switch>
         <Route exact path={"/"}>
-          <Layout>
-            <Home />
-          </Layout>
+          <Home />
         </Route>
         <Route path={"/chat"}>
           <Chat />
@@ -32,4 +31,4 @@ const AppRoutes = () => {
   );
 };
 
-export default AppRoutes 
+export default AppRoutes;
