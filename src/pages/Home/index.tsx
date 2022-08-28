@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Grid } from "@mui/material";
+import { Box, Container, Typography, Grid, Button } from "@mui/material";
 import Hunza from "../../assets/videos/hunza.mp4";
 import SearchBox from "../Searchbar/index";
 import Rating from "../../components/Rating";
@@ -7,8 +7,33 @@ import Carousel from "../carousel";
 import WaveSvg from "../../assets/spaceremove.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import FrequentQuestions from "../../components/FrequentlyAskedQuestions";
+import { QuestionsMock } from "../../mockData/index";
+import { makeStyles } from "@mui/styles";
+import theme from "../../theme";
+
+const useStyles = makeStyles(() => ({
+  slick: {
+    "& .slick-list": {
+      padding: "20px 10px !important",
+    },
+    "& .slick-prev": {
+      zIndex: "1",
+      backgroundColor: theme.palette.primary.main,
+      borderRadius: "30px",
+      left: "15px",
+    },
+    "& .slick-next": {
+      zIndex: "1",
+      backgroundColor: theme.palette.primary.main,
+      borderRadius: "30px",
+      right: "15px",
+    },
+  },
+}));
 
 const Home = () => {
+  const classes = useStyles();
   const settings = {
     className: "center",
     centerMode: true,
@@ -57,7 +82,12 @@ const Home = () => {
       </section>
 
       <section>
-        <Box sx={{ backgroundColor: "#fff" }} pb={3}>
+        <Box
+          sx={{ backgroundColor: "#fff" }}
+          pb={3}
+          pt={5}
+          className={classes.slick}
+        >
           <Typography
             variant="h4"
             color="primary"
@@ -65,7 +95,7 @@ const Home = () => {
             fontWeight="700"
             pb={4}
           >
-            Reviews
+            REVIEWS
           </Typography>
           <Slider {...settings}>
             <Rating />
@@ -73,6 +103,31 @@ const Home = () => {
             <Rating />
             <Rating />
           </Slider>
+        </Box>
+      </section>
+      <section style={{ background: "#fff" }}>
+        <Box width={"60%"} margin={"auto"} pt={5}>
+          <Typography
+            variant="h4"
+            color="primary"
+            textAlign="center"
+            fontWeight="700"
+            pb={4}
+          >
+            FREQUENTLY ASKED QUESTIONS
+          </Typography>
+          {QuestionsMock.map((question, index) => {
+            return (
+              <FrequentQuestions
+                question={question.question}
+                id={question.id}
+                answer={question.answer}
+              />
+            );
+          })}
+          <Box py={4} width={"100%"} display={"flex"} justifyContent="center">
+            <Button variant="outlined">Show more</Button>
+          </Box>
         </Box>
       </section>
     </Container>

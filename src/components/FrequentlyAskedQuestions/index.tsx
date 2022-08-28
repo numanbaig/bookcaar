@@ -15,7 +15,10 @@ const Accordion = (props: AccordionProps) => {
   return (
     <MuiAccordion
       sx={{
-        border: `1px solid ${theme.palette.divider}`,
+        // border: `1px solid ${theme.palette.divider}`,
+        "& .css-1s512vu-MuiPaper-root-MuiAccordion-root": {
+          border: "none",
+        },
         "&:not(:last-child)": {
           borderBottom: 0,
         },
@@ -61,7 +64,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export default function CustomizedAccordions(props: any) {
+export default function CustomizedAccordions({ id, question, answer }: any) {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [isOpen, setOpen] = React.useState<boolean>(false);
 
@@ -73,23 +76,18 @@ export default function CustomizedAccordions(props: any) {
 
   return (
     <div>
-      {props.questions.map((question: any, index: number) => (
-        <Accordion
-          expanded={expanded === question.id}
-          onChange={handleChange(question.id)}
+      <Accordion expanded={expanded === id} onChange={handleChange(id)}>
+        <AccordionSummary
+          aria-controls="panel1d-content"
+          id="panel1d-header"
+          open={isOpen && expanded === id}
         >
-          <AccordionSummary
-            aria-controls="panel1d-content"
-            id="panel1d-header"
-            open={isOpen && expanded === question.id}
-          >
-            <Typography fontSize={"20px"}>{question.question}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>{question.answer}</Typography>
-          </AccordionDetails>
-        </Accordion>
-      ))}
+          <Typography fontSize={"20px"}>{question}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>{answer}</Typography>
+        </AccordionDetails>
+      </Accordion>
     </div>
   );
 }
