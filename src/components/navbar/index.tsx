@@ -1,4 +1,4 @@
-import { Box, Container, MenuItem, Typography, useTheme } from "@mui/material";
+import { Box, Container, MenuItem, Typography, Button,useTheme } from "@mui/material";
 import { LayoutContainer, MoreMenu, Welcome } from "./styles";
 
 const Navbar = () => {
@@ -9,7 +9,6 @@ const Navbar = () => {
     { page: "About us", id: 1 },
     { page: "Contact us", id: 1 },
     { page: "Login", id: 1 },
-    { page: "Sign Up", id: 1 },
   ];
   return (
     <Container maxWidth={false} disableGutters>
@@ -38,6 +37,20 @@ const Navbar = () => {
             );
           })}
         </Box>
+        <Box>
+        <Button 
+          size='large'
+          variant="outlined"
+          sx={{color:'#fff',borderColor:theme.palette.primary.contrastText, borderRadius:"34px",marginRight:"1rem"}}
+          >Login
+          </Button>
+        <Button 
+          size='large'
+          variant="outlined"
+          sx={{color:'#fff',borderColor:theme.palette.primary.contrastText, borderRadius:"34px"}}
+          >Sign Up
+          </Button>
+          </Box>
       </LayoutContainer>
     </Container>
   );

@@ -3,6 +3,7 @@ import Hunza from "../../assets/videos/hunza.mp4";
 import SearchBox from "../Searchbar/index";
 import Carousel from '../carousel/index'
 import  WaveSvg from '../../assets/spaceremove.svg'
+import Gallery from '../../gallery/index'
 
 const Home = () => {
   return (
@@ -37,7 +38,9 @@ const Home = () => {
         </Box>
       </section>
       <Carousel/>
+      <Gallery/>
     </Container>
+
   );
 };
 

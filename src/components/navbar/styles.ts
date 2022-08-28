@@ -10,7 +10,7 @@ export const LayoutContainer = styled("div")(({ theme }) => ({
   color: theme.palette.white,
   background: opacityColors().z1,
   boxShadow: themeShadows().primary,
-  height: "30px",
+  height: "8vh",
   width: "100%",
   position: "fixed",
   "&:hover": {
