@@ -72,10 +72,10 @@ const Item = ({
   return (
     <Box
       mx="auto"
-      textAlign="center"
       display="flex"
       padding="2rem"
       maxWidth={"80%"}
+      textAlign="left"
       justifyContent={"space-around"}
     >
       <Box width="40%" borderRadius={"2rem"} flex="1">
@@ -90,24 +90,18 @@ const Item = ({
           }}
         />
       </Box>
-      <Box flex="1" marginLeft="1rem">
-        <Typography variant="h6" sx={{ marginTop: theme.spacing(6) }}>
+      <Box flex="1" marginLeft="1rem" my='auto'>
+        <Typography variant="h4" sx={{ marginTop: theme.spacing(6) }}>
           {item.title}
         </Typography>
         <Typography
-          sx={{ marginTop: theme.spacing(2) }}
+          sx={{ marginTop: theme.spacing(2),marginLeft:"1rem" }}
           variant="body1"
           color={theme.palette.grey[600]}
         >
           Hunza was a princely state, bordering China to the north-east and
           Pamir to its north-west, which continued to survive until 1974, when
-          it was finally dissolved by Zulfikar Ali Bhutto. The state bordered
-          the Gilgit Agency to the south, the former princely state of Nagar to
-          the east. The state capital was the town of Baltit (also known as
-          Karimabad) and its old settlement is Ganish Village. Situated at an
-          elevation of 2,438 meters, Hunza Valley's tourist season is from May
-          to October. The temperature in May is maximum 27°C and minimum 14°C.
-          The October temperatures are: maximum 10°C and minimum 0°C.
+          it was finally dissolved by Zulfikar Ali Bhutto. The state borderedum 10°C and minimum 0°C.
         </Typography>
         <Button
           sx={{
@@ -115,8 +109,10 @@ const Item = ({
             width: "auto",
             textTransform: "none",
             boxShadow: themeShadows().primary,
+            borderRadius: "34px !important",
           }}
-          variant="text"
+          variant="outlined"
+          size='large'
           endIcon={<ChevronRightIcon />}
         >
           <Typography
