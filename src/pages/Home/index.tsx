@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 import FrequentQuestions from "../../components/FrequentlyAskedQuestions";
 import { QuestionsMock } from "../../mockData/index";
 import { makeStyles } from "@mui/styles";
+import Vehicles from '../../components/vehicle/index'
 import theme from "../../theme";
 
 const useStyles = makeStyles(() => ({
@@ -70,12 +71,12 @@ const Home = () => {
           pt={5}
         >
           <SearchBox />
-          <img
+          {/* <img
             src={WaveSvg}
             className="logo"
             alt="Vite logo"
             style={{ position: "absolute", top: "-40px" }}
-          />
+          /> */}
         </Box>
       </section>
       <section style={{ background: "#fff" }}>
@@ -131,8 +132,8 @@ const Home = () => {
           </Box>
         </Box>
       </section>
-      <Carousel/>
       <Gallery/>
+      <Vehicles/>
     </Container>
 
   );

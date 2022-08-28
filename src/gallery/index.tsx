@@ -1,6 +1,6 @@
 import React from "react";
 import "./gallery.css";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box ,useTheme} from "@mui/material";
 import image1 from "../assets/Images/g1.jpg";
 import image2 from "../assets/Images/g2.jpg";
 import image3 from "../assets/Images/g3.jpg";
@@ -15,13 +15,15 @@ import { themeShadows } from "../theme/shadows";
 import PlaceIcon from "@mui/icons-material/Place";
 
 export default function Index() {
+  const theme=useTheme()
   return (
     <Box
       className="gallery"
       id="gallery"
-      maxWidth={"85%"}
+      maxWidth={"90%"}
       mx="auto"
-      mt="1.5rem"
+      px="1.5rem"
+      bgcolor={theme.palette.primary.contrastText}
       textAlign={"center"}
     >
       <div className="heading">

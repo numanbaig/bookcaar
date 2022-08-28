@@ -6,6 +6,7 @@ import Navbar from "../components/navbar";
 import Chat from "../pages/Chat";
 import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
+import SignUp from '../pages/Auth/Register'
 const AppRoutes = () => {
   return (
     <Router>
@@ -25,6 +26,9 @@ const AppRoutes = () => {
         </Route>
         <Route exact path={"/login"}>
           <Login />
+        </Route>
+        <Route exact path={"/signUp"}>
+          <SignUp />
         </Route>
       </Switch>
     </Router>
