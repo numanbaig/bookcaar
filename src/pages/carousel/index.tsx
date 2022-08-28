@@ -72,24 +72,25 @@ const Item = ({
   return (
     <Box
       mx="auto"
-      display="flex"
+      display='flex'
       padding="2rem"
+      flexWrap={'wrap'}
       maxWidth={"80%"}
       textAlign="left"
       justifyContent={"space-around"}
     >
-      <Box width="40%" borderRadius={"2rem"} flex="1">
         <img
           src={item.image}
           alt="Alternative text goes here as usual"
           style={{
-            width: "100%",
+            width: "50%",
             height: "40vh",
             borderRadius: "2rem",
-            boxShadow: themeShadows().warning,
+            border:"1px solid",
+            borderColor:opacityColors().primary,
+            boxShadow: themeShadows().primary,
           }}
         />
-      </Box>
       <Box flex="1" marginLeft="1rem" my='auto'>
         <Typography variant="h4" sx={{ marginTop: theme.spacing(6) }}>
           {item.title}

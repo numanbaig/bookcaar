@@ -21,7 +21,6 @@ const useStyles = makeStyles(() => ({
   img: {
     width: "auto",
     maxWidth:"200px",
-    height: "100px",
     margin: "auto",
   },
   heading: {
