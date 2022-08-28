@@ -1,22 +1,40 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { FamilyRestroomOutlined } from "@mui/icons-material";
+import { createSlice } from "@reduxjs/toolkit";
+
+import { createUserWithEmail, loginWithEmail } from "../services/Auth";
+
 const initialState = {
-    user: null,
-}
+  user: null,
+  isLoading: false,
+};
 const userSlice = createSlice({
-    name: "user",
-    initialState,
-    reducers: {
-        userAdded(state, action) {
-            state.user = action.payload
-        },
-        userRemoved(state, action) {
-            state.user = null
-        },
+  name: "user",
+  initialState,
+  reducers: {
+    userAdded(state, action) {
+      state.user = action.payload;
     },
-})
+    userRemoved(state, action) {
+      state.user = null;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(createUserWithEmail.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(createUserWithEmail.fulfilled, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(loginWithEmail.pending, (state, action)=> {
 
-export const { userAdded, userRemoved } = userSlice.actions
+      })
+      .addCase(loginWithEmail.fulfilled, (state, action)=> {
 
-export const selectUser = (state) => state.user.user
+    })
+  },
+});
 
-export default userSlice.reducer
+export const { userAdded, userRemoved } = userSlice.actions;
+
+export default userSlice.reducer;
