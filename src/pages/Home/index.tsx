@@ -1,10 +1,11 @@
 import { Box, Container, Typography, Grid, Button } from "@mui/material";
 import Hunza from "../../assets/videos/hunza.mp4";
 import SearchBox from "../Searchbar/index";
+import Carousel from '../carousel/index'
+import  WaveSvg from '../../assets/spaceremove.svg'
+import Gallery from '../../gallery/index'
 import Rating from "../../components/Rating";
 import Slider from "react-slick";
-import Carousel from "../carousel";
-import WaveSvg from "../../assets/spaceremove.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FrequentQuestions from "../../components/FrequentlyAskedQuestions";
@@ -130,7 +131,10 @@ const Home = () => {
           </Box>
         </Box>
       </section>
+      <Carousel/>
+      <Gallery/>
     </Container>
+
   );
 };
 
