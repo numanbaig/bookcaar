@@ -7,12 +7,12 @@ import {
   useTheme,
 } from "@mui/material";
 import { LayoutContainer, MoreMenu, Welcome } from "./styles";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import Logo from "../../assets/bookcar.png";
 
 const Navbar = () => {
   const theme = useTheme();
-  const history = useHistory()
+  const history = useHistory();
   const pages = [
     { page: "Home", id: 1 },
     { page: "Events", id: 1 },
@@ -23,8 +23,15 @@ const Navbar = () => {
     <Container maxWidth={false} disableGutters>
       <LayoutContainer>
         <Box>
-          <img src={Logo} alt="logo" width="50px" height='50px'/>
-          <Welcome>BooKCaaR</Welcome>
+          <img
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+            src={Logo}
+            alt="logo"
+            width="50px"
+            height="50px"
+          />
         </Box>
 
         <Box display={"flex"} gap={5}>
@@ -49,6 +56,7 @@ const Navbar = () => {
         </Box>
         <Box>
           <Button
+            data-aos="fade-left"
             size="large"
             variant="outlined"
             sx={{
@@ -57,11 +65,12 @@ const Navbar = () => {
               borderRadius: "34px",
               marginRight: "1rem",
             }}
-            onClick={()=>history.push('login')}
+            onClick={() => history.push("login")}
           >
             Login
           </Button>
           <Button
+            data-aos="fade-left"
             size="large"
             variant="outlined"
             sx={{
@@ -69,7 +78,7 @@ const Navbar = () => {
               borderColor: theme.palette.primary.contrastText,
               borderRadius: "34px",
             }}
-            onClick={()=>history.push('signUp')}
+            onClick={() => history.push("signUp")}
           >
             Sign Up
           </Button>

@@ -19,7 +19,8 @@ const useStyles = makeStyles(() => ({
     }
   },
   img: {
-    width: "100px",
+    width: "auto",
+    maxWidth:"200px",
     height: "100px",
     margin: "auto",
   },
