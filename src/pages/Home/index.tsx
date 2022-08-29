@@ -14,6 +14,7 @@ import { makeStyles } from "@mui/styles";
 import Vehicles from '../../components/vehicle/index'
 import theme from "../../theme";
 import { useSelector } from "react-redux";
+import { useEffect ,useState} from "react";
 
 const useStyles = makeStyles(() => ({
   slick: {
@@ -36,6 +37,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Home = () => {
+  const [activeNav,setActiveNav]=useState(0)
   const classes = useStyles();
   const state = useSelector((state) => state);
 
@@ -47,6 +49,12 @@ const Home = () => {
     slidesToShow: 3,
     speed: 500,
   };
+
+  useEffect(() => {
+  window.addEventListener("scroll", setActiveNav(window.scrollY ))
+}, [])
+
+
   return (
     <Container maxWidth={false} disableGutters>
       <section style={{ height: "100vh" }}>
@@ -68,21 +76,17 @@ const Home = () => {
           sx={{
             background: "#fff",
             position: "absolute",
-            bottom: "0",
+            bottom: "-39px",
             width: "100%",
           }}
           pt={5}
         >
           <SearchBox />
-          {/* <img
-            src={WaveSvg}
-            className="logo"
-            alt="Vite logo"
-            style={{ position: "absolute", top: "-40px" }}
-          /> */}
+        
         </Box>
       </section>
       <section style={{ background: "#fff" }}>
+      <Vehicles/>
         <Carousel />
       </section>
 
@@ -136,8 +140,8 @@ const Home = () => {
         </Box>
       </section>
       <Carousel/>
-      <Gallery />
       <Vehicles />
+      <Gallery/>
     </Container>
   );
 };
