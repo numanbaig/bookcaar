@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Bid from "./Bid";
+import Bid from "../../components/userBids/index";
 import Container from "@mui/material/Container";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { opacityColors } from "../../theme/opacityColors";
@@ -27,8 +27,9 @@ const BidsList = () => {
     setValue(newValue as number[]);
   };
   return (
-    <Box sx={{ display: "flex" }} maxWidth="90%" margin="0rem auto">
-      <Box
+    <Box sx={{ display: "flex" }} maxWidth="90%" margin="0rem auto" minHeight="90vh">
+      <Bid />
+      {/* <Box
       mt="8rem"
         sx={{
           border: `1px solid ${opacityColors().borderColor}`,
@@ -115,7 +116,7 @@ const BidsList = () => {
             />
           </Box>
         ))}
-      </Box>
+      </Box> */}
     </Box>
   );
 };

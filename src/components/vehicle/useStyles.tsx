@@ -19,8 +19,9 @@ const useStyles = makeStyles(() => ({
     }
   },
   img: {
-    width: "auto",
-    maxWidth:"200px",
+    width: "80%",
+    height:"150px",
+    objectFit:"contain",
     margin: "auto",
   },
   heading: {

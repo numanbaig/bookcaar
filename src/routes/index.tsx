@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "../pages/Home";
-import Bids from "../pages/Bids";
+import Bids from "../pages/Bids/index";
 import Private from "./PrivateGuard";
 import Navbar from "../components/navbar";
 import Chat from "../pages/Chat";
 import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
-import SignUp from '../pages/Auth/Register'
+import SignUp from '../pages/Auth/Register';
+import Footer from '../components/footer/index';
+
 const AppRoutes = () => {
   return (
     <Router>
@@ -31,6 +33,7 @@ const AppRoutes = () => {
           <SignUp />
         </Route>
       </Switch>
+      <Footer/>
     </Router>
   );
 };

@@ -18,8 +18,8 @@ export default function Index() {
   const theme=useTheme()
   return (
     <Box
+    id={'Gallery'}
       className="gallery"
-      id="gallery"
       maxWidth={"90%"}
       mx="auto"
       px="1.5rem"
