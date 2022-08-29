@@ -8,7 +8,7 @@ export const LayoutContainer = styled("div")(({ theme }) => ({
   justifyContent: "space-between",
   padding: "1.5rem 20px",
   color: theme.palette.white,
-  background: opacityColors().z1,
+  background: opacityColors().z2,
   boxShadow: themeShadows().primary,
   height: "8vh",
   width: "100%",

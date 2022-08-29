@@ -25,7 +25,7 @@ export interface BidProps {
   time: string;
   image: string;
   status: string;
-  tripType: "short-rental" | "per-day";
+  tripType: any;
 }
 const Bid = ({
   name,

@@ -90,7 +90,7 @@ const Home = () => {
         <Carousel />
       </section>
 
-      <section>
+      <section id={'Reviews'}>
         <Box
           sx={{ backgroundColor: "#fff" }}
           pb={3}

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "../pages/Home";
-import Bids from "../pages/Bids";
+import Bids from "../pages/Bids/index";
 import Private from "./PrivateGuard";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "../Firebase/FirebaseConfig";
@@ -10,7 +10,8 @@ import { useDispatch } from "react-redux";
 import Navbar from "../components/navbar";
 import Chat from "../pages/Chat";
 import Register from "../pages/Auth/Register";
-import Login from "../pages/Auth/Login";
+import Login from "../pages/Auth/Login"
+import Footer from '../components/footer/index';
 import SignUp from "../pages/Auth/Register";
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -70,6 +71,7 @@ const AppRoutes = () => {
           <SignUp />
         </Route>
       </Switch>
+      <Footer/>
     </Router>
   );
 };
