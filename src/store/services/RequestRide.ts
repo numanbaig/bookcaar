@@ -15,15 +15,9 @@ export interface IRequestRideInterface {
 
 export const requestRide = createAsyncThunk(
     "requestRide",
-<<<<<<< Updated upstream:src/store/services/RequestRide.ts
-    async (data:any) => {
-        const requestRideRef = doc(collection(db, "requestRide"));
-        await setDoc(requestRideRef, {...data,createdAt:serverTimestamp});
-=======
     async (data: any) => {
         const requestRideRef = doc(collection(db, "ride request"));
         await setDoc(requestRideRef, { ...data, createdAt: serverTimestamp });
->>>>>>> Stashed changes:src/store/services/RequectRide.ts
     });
 
 
