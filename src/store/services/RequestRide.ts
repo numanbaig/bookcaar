@@ -6,18 +6,18 @@ import { IUser } from "store/Interfaces/user";
 
 
 export interface IRequestRideInterface {
-    vehicle:string,
-    dropOffLocation:string,
-    pickUpTime:string,
-    pickUpLocation:string,
-    userId:string,
+    vehicle: string,
+    dropOffLocation: string,
+    pickUpTime: string,
+    pickUpLocation: string,
+    userId: string,
 }
 
 export const requestRide = createAsyncThunk(
     "requestRide",
-    async (data:any) => {
-        const requestRideRef = doc(collection(db, "requestRide"));
-        await setDoc(requestRideRef, {...data,createdAt:serverTimestamp});
+    async (data: any) => {
+        const requestRideRef = doc(collection(db, "ride request"));
+        await setDoc(requestRideRef, { ...data, createdAt: serverTimestamp });
     });
 
 
