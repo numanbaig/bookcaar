@@ -27,9 +27,9 @@ const BidsList = () => {
     setValue(newValue as number[]);
   };
   return (
-    <Box sx={{ display: "flex" }} maxWidth="90%" margin="1rem auto">
+    <Box sx={{ display: "flex" }} maxWidth="90%" margin="0rem auto">
       <Box
-      mt="1rem"
+      mt="8rem"
         sx={{
           border: `1px solid ${opacityColors().borderColor}`,
           width: "25%",
@@ -104,7 +104,7 @@ const BidsList = () => {
             tripType: "short-rental",
           },
         ].map((item) => (
-          <Box>
+          <Box mt='7rem'>
             <Bid
               name={item.name}
               pickupLocation={item.pickupLocation}

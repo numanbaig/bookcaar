@@ -1,5 +1,6 @@
 import { Box, Container } from "@mui/material";
 import Navbar from "../navbar";
+import Footer from '../footer/index'
 
 type IProps = {
   children: React.ReactNode;
@@ -11,6 +12,7 @@ const Layout = (props: any) => {
       <Box>
         <Navbar />
         <Box>{props.children}</Box>
+        <Footer/> 
       </Box>
     </Container>
   );
