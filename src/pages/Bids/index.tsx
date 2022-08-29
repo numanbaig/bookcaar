@@ -1,81 +1,39 @@
-import React, { useState } from "react";
-import Bid from "../../components/userBids/index";
-import Container from "@mui/material/Container";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { opacityColors } from "../../theme/opacityColors";
-import {
-  Typography,
-  Slider,
-  Divider,
-  AccordionSummary,
-  Box,
-  Accordion,
-  AccordionDetails,
-  FormControlLabel,
-  Radio,
-  useTheme,
-} from "@mui/material";
-
-function valuetext(value: number) {
-  return `${value}°C`;
-}
+import React, { useState, useEffect } from "react";
+import Bid from "../../components/userBids";
+import { Typography, Box } from "@mui/material";
+import SearchBox from "./MyRequest";
+import { useSelector } from "react-redux";
+import { store } from "../../store";
+import { requestRide } from "../../store/services/RequestRide";
 
 const BidsList = () => {
-  const [value, setValue] = useState<number[]>([20, 37]);
-
-  const handleChange = (event: Event, newValue: number | number[]) => {
-    setValue(newValue as number[]);
-  };
+  const [requests, setRequests] = useState([]);
+  const myRequests = useSelector((state: any) => state.bookRide.myRequests);
+  useEffect(() => {
+    if (myRequests.length > 0) {
+      store.dispatch(requestRide(myRequests[0]));
+    }
+  }, []);
+  useEffect(() => {
+    if (myRequests.length > 0) {
+      setRequests(myRequests);
+    }
+  }, [myRequests]);
   return (
-    <Box sx={{ display: "flex" }} maxWidth="90%" margin="0rem auto" minHeight="90vh">
-      <Bid />
-      {/* <Box
-      mt="8rem"
-        sx={{
-          border: `1px solid ${opacityColors().borderColor}`,
-          width: "25%",
-          height:"30%",
-        }}
-      >
-        <Accordion disableGutters defaultExpanded>
-          <AccordionSummary
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-            expandIcon={<ExpandMoreIcon />}
-          >
-            <Typography color="primary" variant='subtitle1'>Price</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="caption">Rs:152- RS:155</Typography>
-            <Slider
-              getAriaLabel={() => "Temperature range"}
-              value={value}
-              onChange={handleChange}
-              valueLabelDisplay="auto"
-              getAriaValueText={valuetext}
-            />
-          </AccordionDetails>
-        </Accordion>
-        <Divider variant="middle" />
-        <Accordion disableGutters defaultExpanded>
-          <AccordionSummary
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-            expandIcon={<ExpandMoreIcon />}
-          >
-            <Typography color="primary" variant='subtitle1'>Passenger</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="caption">152-155</Typography>
-            <Slider
-              defaultValue={50}
-              aria-label="Default"
-              valueLabelDisplay="auto"
-            />
-          </AccordionDetails>
-        </Accordion>
-      </Box>
-      <Box>
+    <Box sx={{ display: "flex", justifyContent: "center" }} margin="0rem auto">
+      <Box mt="5rem">
+        <Box>
+          <Typography py={2} variant="h5" color="primary" fontWeight={700}>
+            My Request
+          </Typography>
+          <SearchBox myRequests={requests[0]} />
+        </Box>
+
+        <Box pt={4} margin={"auto"}>
+          <Typography variant="h5" color="primary" fontWeight={700}>
+            Bids by drivers
+          </Typography>
+        </Box>
         {[
           {
             name: "NOMAN",
@@ -104,9 +62,10 @@ const BidsList = () => {
             status: "Active",
             tripType: "short-rental",
           },
-        ].map((item) => (
-          <Box mt='7rem'>
+        ].map((item, index) => (
+          <Box>
             <Bid
+              key={index}
               name={item.name}
               pickupLocation={item.pickupLocation}
               time={item.time}
@@ -116,7 +75,7 @@ const BidsList = () => {
             />
           </Box>
         ))}
-      </Box> */}
+      </Box>
     </Box>
   );
 };

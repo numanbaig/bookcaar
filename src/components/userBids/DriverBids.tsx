@@ -14,11 +14,12 @@ import Button from "../../components/Button";
 import CarImage from "../../assets/car.jpeg";
 import Divider from "@mui/material/Divider";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
-import WorkIcon from '@mui/icons-material/Work';
-import AirlineSeatReclineNormalIcon from '@mui/icons-material/AirlineSeatReclineNormal';
-import DriveEtaIcon from '@mui/icons-material/DriveEta';
+import WorkIcon from "@mui/icons-material/Work";
+import AirlineSeatReclineNormalIcon from "@mui/icons-material/AirlineSeatReclineNormal";
+import DriveEtaIcon from "@mui/icons-material/DriveEta";
 import { themeShadows } from "../../theme/shadows";
 import { opacityColors } from "../../theme/opacityColors";
+import { useSelector } from "react-redux";
 export interface BidProps {
   name: string;
   pickupLocation: string;
@@ -39,7 +40,10 @@ const Bid = ({
   const shadows = themeShadows();
 
   return (
-    <Box sx={{ padding: "1rem",maxHeight:"25vh" }} display="flex">
+    <Box
+      sx={{ padding: "1rem", maxHeight: "25vh", justifyContent: "center" }}
+      display="flex"
+    >
       <Card
         sx={{
           boxShadow: themeShadows().z12,
@@ -53,7 +57,12 @@ const Bid = ({
         <Box sx={{ display: "grid", gridTemplateColumns: "1fr 2fr " }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <img
-              style={{ width: "100%", borderRadius: "10px 0px 0px 10px",objectFit:"cover",maxHeight:"25vh" }}
+              style={{
+                width: "100%",
+                borderRadius: "10px 0px 0px 10px",
+                objectFit: "cover",
+                maxHeight: "25vh",
+              }}
               src={CarImage}
             />
           </Box>
@@ -84,19 +93,19 @@ const Bid = ({
                       AC
                     </Typography>
                   </Box>
-                  <Box display="flex" ml='1rem'>
+                  <Box display="flex" ml="1rem">
                     <WorkIcon color="primary" />
                     <Typography color="primary" sx={{ marginLeft: ".2rem" }}>
                       3
                     </Typography>
                   </Box>
-                  <Box display="flex" ml='1rem'>
+                  <Box display="flex" ml="1rem">
                     <DriveEtaIcon color="primary" />
                     <Typography color="primary" sx={{ marginLeft: ".2rem" }}>
                       auto
                     </Typography>
                   </Box>
-                  
+
                   <Box display="flex" ml="1rem">
                     <AirlineSeatReclineNormalIcon color="primary" />
                     <Typography color="primary" sx={{ marginLeft: ".2rem" }}>
@@ -105,9 +114,10 @@ const Bid = ({
                   </Box>
                 </Box>
                 <Box display="flex" mt={".5rem"}>
-                  {["full-day", "short-day"].map((type) => (
+                  {["full-day", "short-day"].map((type, index) => (
                     <FormControlLabel
                       value={type}
+                      key={index}
                       control={<Radio />}
                       label={type}
                     />

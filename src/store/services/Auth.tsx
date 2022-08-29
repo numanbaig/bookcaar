@@ -12,6 +12,7 @@ import { IUser } from "store/Interfaces/user";
 interface ILoginProps {
   email: string;
   password: string;
+  history: any;
 }
 
 export interface ICreateUserProps {
@@ -20,15 +21,14 @@ export interface ICreateUserProps {
   phoneNumber: number;
   gender: string;
   name: string;
+  history: any;
 }
 
 const userRef = async (user: IUser) => {
-  console.log(user, "user");
   await setDoc(doc(db, "users", `${user.uid}`), {
     displayName: user.displayName,
     email: user.email,
     uid: user.uid,
-    photoURL: user?.photoURL,
     phoneNumber: user.phoneNumber,
     metadata: {
       createdAt: user.metadata.createdAt,
@@ -41,27 +41,40 @@ const userRef = async (user: IUser) => {
 
 export const createUserWithEmail = createAsyncThunk(
   "users/createUserWithEmail",
-  async (data: ICreateUserProps) => {
-    await createUserWithEmailAndPassword(auth, data.email, data.password).then(
-      (userCredential) => {
-        const user = userCredential.user;
-        userRef({
-          ...user,
-          displayName: data.name,
-          gender: data.gender,
-        } as unknown as IUser);
-        return user;
-      }
-    );
+  async ({
+    email,
+    password,
+    phoneNumber,
+    gender,
+    name,
+    history,
+  }: ICreateUserProps) => {
+    await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
+      phoneNumber
+    ).then((userCredential) => {
+      const user = userCredential.user;
+      history.push("/bids");
+      userRef({
+        ...user,
+        displayName: name,
+        gender: gender,
+      } as unknown as IUser);
+
+      return user;
+    });
   }
 );
 
 export const loginWithEmail = createAsyncThunk(
   "users/loginWithEmail",
-  async ({ email, password }: ILoginProps) => {
+  async ({ email, password, history }: ILoginProps) => {
     return await signInWithEmailAndPassword(auth, email, password).then(
       (userCredential) => {
         const user = userCredential.user;
+        history.push("/bids");
         return user;
       }
     );
