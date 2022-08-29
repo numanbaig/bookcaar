@@ -17,6 +17,8 @@ import { Formik, Form, Field } from "formik";
 import { store } from "../../store";
 import { loginWithEmail, ICreateUserProps } from "../../store/services/Auth";
 import * as Yup from "yup";
+import Logo from "../../assets/bookcar.png";
+import sideImage from "../../assets/Images/sideImage2.webp";
 
 const LoginSchema = Yup.object({
   email: Yup.string()
@@ -37,10 +39,10 @@ export default function Register() {
       <Grid
         item
         xs={false}
-        sm={4}
-        md={7}
+        sm={6}
+        md={6}
         sx={{
-          backgroundImage: "url(https://source.unsplash.com/random)",
+          backgroundImage: `url(${sideImage})`,
           backgroundRepeat: "no-repeat",
           backgroundColor: (t) =>
             t.palette.mode === "light"
@@ -50,21 +52,23 @@ export default function Register() {
           backgroundPosition: "center",
         }}
       />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={6} md={6} component={Paper} elevation={6} square>
         <Box
           sx={{
-            my: 8,
-            mx: 4,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            justifyContent: "center",
+            maxWidth: "60%",
+            margin: "auto",
+            height: "100%",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <Box pb={2}>
+            <img src={Logo} width="100px" />
+          </Box>
           <Typography component="h1" variant="h5">
-            Register
+            Login
           </Typography>
           <Formik
             initialValues={{
@@ -110,13 +114,14 @@ export default function Register() {
                   bgColor="primary"
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  Register
+                  Login
                 </Button>
                 <Grid container>
                   <Grid item>
                     <Link
                       onClick={() => history.push("/register")}
                       variant="body2"
+                      sx={{ cursor: "pointer" }}
                     >
                       {"Don't have an account? Sign Up"}
                     </Link>

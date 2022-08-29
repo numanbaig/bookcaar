@@ -1,4 +1,3 @@
-import * as React from "react";
 import Button from "../../components/Button";
 import {
   Grid,
@@ -7,7 +6,6 @@ import {
   Paper,
   TextField,
   CssBaseline,
-  Avatar,
   Typography,
   useTheme,
   RadioGroup,
@@ -17,7 +15,6 @@ import {
   FormLabel,
   FormHelperText,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useHistory } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -26,6 +23,8 @@ import {
   createUserWithEmail,
   ICreateUserProps,
 } from "../../store/services/Auth";
+import Logo from "../../assets/bookcar.png";
+import SideImage from "../../assets/Images/sideImage.webp";
 
 const SignupSchema = Yup.object({
   name: Yup.string()
@@ -56,31 +55,33 @@ export default function Signup() {
         item
         xs={false}
         sm={4}
-        md={7}
+        md={6}
         sx={{
-          backgroundImage: "url(https://source.unsplash.com/random)",
+          backgroundImage: `url(${SideImage})`,
           backgroundRepeat: "no-repeat",
           backgroundColor: (t) =>
             t.palette.mode === "light"
               ? t.palette.grey[50]
               : t.palette.grey[900],
-          backgroundSize: "cover",
+          backgroundSize: "auto",
           backgroundPosition: "center",
         }}
       />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
         <Box
           sx={{
-            my: 8,
-            mx: 4,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            justifyContent: "center",
+            maxWidth: "60%",
+            margin: "auto",
+            height: "100%",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <Box pb={2}>
+            <img src={Logo} width="100px" />
+          </Box>
           <Typography component="h1" variant="h5">
             Register
           </Typography>
@@ -203,6 +204,7 @@ export default function Signup() {
                     <Link
                       onClick={() => history.push("/login")}
                       variant="body2"
+                      sx={{ cursor: "pointer" }}
                     >
                       {"Already have an account? Login"}
                     </Link>

@@ -6,18 +6,12 @@ import { store } from "../../store";
 import { requestRide } from "../../store/services/RequestRide";
 
 const BidsList = () => {
-  const [requests, setRequests] = useState([]);
   const myRequests = useSelector((state: any) => state.bookRide.myRequests);
-  // useEffect(() => {
-  //   if (myRequests.length > 0) {
-  //     store.dispatch(requestRide(myRequests[0]));
-  //   }
-  // }, []);
   useEffect(() => {
     if (myRequests.length > 0) {
-      setRequests(myRequests);
+      store.dispatch(requestRide(myRequests[0]));
     }
-  }, [myRequests]);
+  }, []);
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }} margin="0rem auto">
       <Box mt="5rem">
@@ -56,7 +50,7 @@ const BidsList = () => {
           },
         ].map((item, index) => (
           <Box>
-            <Bid
+            {/* <Bid
               key={index}
               name={item.name}
               pickupLocation={item.pickupLocation}
@@ -64,7 +58,7 @@ const BidsList = () => {
               status={item.status}
               image={item.image}
               tripType={"short-rental"}
-            />
+            /> */}
           </Box>
         ))}
       </Box>

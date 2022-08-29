@@ -86,14 +86,13 @@ function Index() {
   };
 
   function HandleFormSubmit(values: any) {
-    // dispatch(storeRequest(values));
-    // console.log(values, "userrrrr");
     values.time = moment(values.time).format("HH:mm");
     if (user) {
-      console.log(values, "userrrrr");
       store.dispatch(
         requestRide({
           ...values,
+          hideRiderId: "",
+          completed: false,
           requestedUser: {
             displayName: user.displayName,
             userId: user.id,
