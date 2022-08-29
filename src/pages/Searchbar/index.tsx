@@ -78,8 +78,8 @@ function Index() {
           userId: user.id,
           email: user.email,
           phoneNumber: user.phoneNumber,
-          bidedDrivers:[],
         },
+        bidedDrivers:[],
       })
     );
   }

@@ -20,8 +20,6 @@ const AppRoutes = () => {
     if (user) {
       getCurrentUser(user.uid);
     } else {
-      // User is signed out
-      // ...
     }
   });
 
