@@ -29,11 +29,6 @@ export const requestRide = createAsyncThunk(
   async (data: any) => {
     try {
       await setDoc(doc(requestRideRef), data);
-      store.dispatch(
-        requestRide({
-          payload: [],
-        })
-      );
     } catch (err) {
       console.error(err, "post ride-request [err!]");
     }
