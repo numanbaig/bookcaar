@@ -20,52 +20,29 @@ const requestRideSlice = createSlice({
       state.myRequests = [...state.myRequests, action.payload];
     },
     extraReducers: (builder) => {
-        builder
-            .addCase(requestRide.pending, (state, action) => {
-                state.isLoading = true;
-            })
-            .addCase(requestRide.fulfilled, (state, action) => {
-                state.isLoading = false;
-            })
-            .addCase(getRequestedRideList.pending, (state, action) => {
-                state.isLoading = true;
-            })
-            .addCase(getRequestedRideList.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.rideList = action.payload;
-            })
-            .addCase(getRequestedRideBids.pending, (state, action) => {
-                state.isLoading = true;
-            })
-            .addCase(getRequestedRideBids.fulfilled, (state, action) => {
-                state.isLoading = false;
-                state.rideBids = action.payload;
-            })
+      builder
+        .addCase(requestRide.pending, (state: any) => {
+          state.isLoading = true;
+        })
+        .addCase(requestRide.fulfilled, (state: any) => {
+          state.isLoading = false;
+        })
+        .addCase(getRequestedRideList.pending, (state: any) => {
+          state.isLoading = true;
+        })
+        .addCase(getRequestedRideList.fulfilled, (state: any, action) => {
+          state.isLoading = false;
+          state.rideList = action.payload;
+        })
+        .addCase(getRequestedRideBids.pending, (state: any) => {
+          state.isLoading = true;
+        })
+        .addCase(getRequestedRideBids.fulfilled, (state: any, action) => {
+          state.isLoading = false;
+          state.rideBids = action.payload;
+        });
     },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(requestRide.pending, (state, action) => {
-        state.isLoading = true;
-      })
-      .addCase(requestRide.fulfilled, (state, action) => {
-        state.isLoading = false;
-      })
-      .addCase(getRequestedRideList.pending, (state, action) => {
-        state.isLoading = true;
-      })
-      .addCase(getRequestedRideList.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.rideBids = action.payload;
-      })
-      .addCase(getRequestedRideBids.pending, (state, action) => {
-        state.isLoading = true;
-      })
-      .addCase(getRequestedRideBids.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.rideBids = action.payload;
-      });
-  },
 });
-
+export const { storeRequest } = requestRideSlice.actions;
 export default requestRideSlice.reducer;
