@@ -1,5 +1,7 @@
 import * as React from "react";
 import Button from "../../components/Button";
+import Image from '../../assets/Images/g6.png'
+import logo from '../../assets/bookcar.png'
 import {
   Grid,
   Box,
@@ -58,7 +60,7 @@ export default function Signup() {
         sm={4}
         md={7}
         sx={{
-          backgroundImage: "url(https://source.unsplash.com/random)",
+          backgroundImage: `url(${Image})`,
           backgroundRepeat: "no-repeat",
           backgroundColor: (t) =>
             t.palette.mode === "light"
@@ -78,9 +80,9 @@ export default function Signup() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
+         <Box>
+            <img src={logo} alt='logo' width="150px" height='auto'/>
+          </Box>
           <Typography component="h1" variant="h5">
             Register
           </Typography>
@@ -90,7 +92,7 @@ export default function Signup() {
               email: "",
               password: "",
               gender: "male",
-              phoneNumber: "",
+              phoneNumber: 123,
             }}
             validationSchema={SignupSchema}
             onSubmit={(values: ICreateUserProps) => {

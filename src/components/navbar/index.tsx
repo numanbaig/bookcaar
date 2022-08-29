@@ -25,13 +25,10 @@ const Navbar = () => {
       <LayoutContainer>
         <Box>
           <img
-            data-aos="fade-right"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
             src={Logo}
             alt="logo"
-            width="50px"
-            height="50px"
+            width="90px"
+            height="auto"
           />
         </Box>
 
