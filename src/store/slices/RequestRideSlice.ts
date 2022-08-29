@@ -1,10 +1,11 @@
-import { FamilyRestroomOutlined } from "@mui/icons-material";
 import { createSlice } from "@reduxjs/toolkit";
 
-import { requestRide } from "../services/RequestRide";
+import { getRequestedRideBids, getRequestedRideList, requestRide } from "../services/RequestRide";
 
 const initialState = {
     isLoading: false,
+    rideList: [],
+    rideBids: [],
 };
 const requestRideSlice = createSlice({
     name: "requestRide",
@@ -21,9 +22,21 @@ const requestRideSlice = createSlice({
             .addCase(requestRide.fulfilled, (state, action) => {
                 state.isLoading = false;
             })
+            .addCase(getRequestedRideList.pending, (state, action) => {
+                state.isLoading = true;
+            })
+            .addCase(getRequestedRideList.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.rideBids = action.payload;
+            })
+            .addCase(getRequestedRideBids.pending, (state, action) => {
+                state.isLoading = true;
+            })
+            .addCase(getRequestedRideBids.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.rideBids = action.payload;
+            })
     },
 });
-
-// export const { u } = requestRideSlice.actions;
 
 export default requestRideSlice.reducer;
