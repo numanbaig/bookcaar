@@ -13,7 +13,6 @@ import {
   FormControlLabel,
   Grid,
 } from "@mui/material/";
-import { ErrorBox, SearchBar } from "./searchbarStyled";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
@@ -22,96 +21,70 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { Formik } from "formik";
 import * as yup from "yup";
 import moment from "moment";
-
 import { store } from "../../store";
-import { PER_DAY } from "../../constants/bookingTypes";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { requestRide } from "../../store/services/RequestRide";
-import { IUser } from "../../store/Interfaces/user";
-import storeRequest from "../../store/slices/RequestRideSlice";
+import { PER_DAY } from "../../constants/bookingTypes";
+import { styled } from "@mui/material/";
+import { themeShadows } from "../../theme/shadows";
+import { opacityColors } from "../../theme/opacityColors";
 
-function Index() {
-  const user = useSelector((state: any) => state.user.user as IUser);
+const SearchBar = styled(Box)(({ theme }) => ({
+  color: theme.palette.primary.contrastText,
+  backgroundColor: theme.palette.background.default,
+  padding: "1.5em",
+  borderRadius: theme.shape.borderRadius,
+  boxShadow: themeShadows().z12,
+  margin: "0px auto",
+  border: `1px solid ${opacityColors().borderColor}`,
+}));
+
+const ErrorBox = styled(Box)(({ theme }) => ({
+  color: theme.palette.error.main,
+  fontSize: "12px",
+}));
+
+function Index(props: any) {
   const [bookingType, setBookingType] = React.useState("Per Day");
-  const history = useHistory();
-  const dispatch = useDispatch();
-
   const validationSchema = yup.object({
-    pickUpLocation: yup.object().shape({
-      label: yup.string().required("Pick up location is required"),
-      value: yup.string().required(),
-    }),
-    dropOfLocation: yup.object().shape({
-      label: yup.string().required("Drop off location is required"),
-      value: yup.string().required(),
-    }),
+    pickUpLocation: yup.string().required("Pick up location is required"),
+    dropOfLocation: yup.string().required("Drop off location is required"),
     bookingType: yup.string().required("Booking type is required"),
     vehicalType: yup.string().required("Vehical Type is required"),
     startDate: yup.string().required("Start date is required"),
     time: yup.string().required("time is required"),
+    numberofdays:
+      bookingType === PER_DAY
+        ? yup
+            .number()
+            .required("Please sepacify number of days you want to stay")
+        : yup.number(),
   });
-
-  const secondValidation = yup.object({
-    pickUpLocation: yup.object().shape({
-      label: yup.string().required("Pick up location is required"),
-      value: yup.string().required(),
-    }),
-    dropOfLocation: yup.object().shape({
-      label: yup.string().required("Drop off location is required"),
-      value: yup.string().required(),
-    }),
-    bookingType: yup.string().required("Booking type is required"),
-    vehicalType: yup.string().required("Vehical Type is required"),
-    startDate: yup.string().required("Start date is required"),
-    time: yup.string().required("time is required"),
-    numberofdays: yup
-      .number()
-      .required("Please sepacify number of days you want to stay"),
-  });
-
-  const validation =
-    bookingType === PER_DAY ? secondValidation : validationSchema;
 
   const initialValues = {
-    pickUpLocation: "",
-    dropOfLocation: "",
-    dropOfCoordinates: "",
-    pickUpCoordinates: "",
-    bookingType: "Per Day",
-    vehicalType: "",
-    startDate: new Date(),
-    time: new Date(),
-    numberofdays: "",
+    pickUpLocation: props.myRequests?.pickUpLocation || "",
+    dropOfLocation: props.myRequests?.dropOfLocation || "",
+    dropOfCoordinates: props.myRequests?.dropOfCoordinates || "",
+    pickUpCoordinates: props.myRequests?.pickUpCoordinates || "",
+    bookingType: props.myRequests?.bookingType || "Per Day",
+    vehicalType: props.myRequests?.vehicalType || "",
+    startDate: props.myRequests?.startDate || new Date(),
+    time: props.myRequests?.time || new Date(),
+    numberofdays: props.myRequests?.numberofdays || "",
   };
 
+  console.log("requests", props.myRequests);
+
   function HandleFormSubmit(values: any) {
-    dispatch(storeRequest(values));
-    if (user) {
-      store.dispatch(
-        requestRide({
-          ...values,
-          requestedUser: {
-            displayName: user.displayName,
-            userId: user.id,
-            email: user.email,
-            phoneNumber: user.phoneNumber,
-            bidedDrivers: [],
-          },
-        })
-      );
-    } else {
-      history.push("/login");
-    }
+    store.dispatch(requestRide(values));
   }
 
   return (
-    <Box position={"relative"} top={"-20vh"}>
+    <Box>
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <SearchBar>
           <Formik
             initialValues={initialValues}
-            validationSchema={validation}
+            validationSchema={validationSchema}
             onSubmit={HandleFormSubmit}
           >
             {(props: any) => (
@@ -216,14 +189,6 @@ function Index() {
                         type={"number"}
                         name="numberofdays"
                         onChange={props.handleChange}
-                        error={
-                          props.touched.numberofdays &&
-                          props.errors.numberofdays
-                        }
-                        helperText={
-                          props.touched.numberofdays &&
-                          props.errors.numberofdays
-                        }
                       />
                     </Box>
                   )}
@@ -280,7 +245,9 @@ function Index() {
                     <TimePicker
                       label="Time"
                       value={props.values.time}
-                      onChange={(e) => props.setFieldValue("time", e)}
+                      onChange={(e) =>
+                        props.setFieldValue("time", moment(e).format("HH:mm"))
+                      }
                       renderInput={(params) => <TextField {...params} />}
                     />
                     {props.errors.time && (
@@ -299,7 +266,6 @@ function Index() {
                     }}
                     type={"submit"}
                     fullWidth
-                    disabled={!props.dirty}
                   >
                     <Typography variant="h6">Find a car</Typography>
                   </Button>

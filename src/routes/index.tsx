@@ -10,8 +10,8 @@ import { useDispatch } from "react-redux";
 import Navbar from "../components/navbar";
 import Chat from "../pages/Chat";
 import Register from "../pages/Auth/Register";
-import Login from "../pages/Auth/Login"
-import Footer from '../components/footer/index';
+import Login from "../pages/Auth/Login";
+import Footer from "../components/footer/index";
 import SignUp from "../pages/Auth/Register";
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -56,20 +56,20 @@ const AppRoutes = () => {
         <Route path={"/chat"}>
           <Chat />
         </Route>
-        <Route exact path={"/bids"}>
+        <Route path={"/bids"}>
           <Bids />
         </Route>
-        <Route exact path={"/register"}>
+        <Route path={"/register"}>
           <Register />
         </Route>
-        <Route exact path={"/login"}>
+        <Route path={"/login"}>
           <Login />
         </Route>
-        <Route exact path={"/signUp"}>
+        <Route path={"/signUp"}>
           <SignUp />
         </Route>
       </Switch>
-      <Footer/>
+      <Footer />
     </Router>
   );
 };

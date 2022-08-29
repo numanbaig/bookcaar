@@ -1,10 +1,9 @@
-import { Box, TextField, CircularProgress } from "@mui/material";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
 import { makeStyles } from "@mui/styles";
-// import ProgressIndicator from "../../../components/Atoms/Loader/Loader";
+import { Box, CircularProgress, TextField } from "@mui/material";
 
 export default function SearchBox({
   setCoordinates,
@@ -14,10 +13,8 @@ export default function SearchBox({
   helperText,
   error,
   label,
-  required,
 }: any) {
   const classes = useStyles();
-
   const handleSelect = async (value: any) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
@@ -30,7 +27,7 @@ export default function SearchBox({
   return (
     <PlacesAutocomplete
       value={address.label}
-      onChange={(e: Event) => setAddress({ ...address, value: e, label: e })}
+      onChange={(e: any) => setAddress({ ...address, value: e, label: e })}
       onSelect={handleSelect}
       shouldFetchSuggestions={address?.value?.length > 3}
       searchOptions={{ componentRestrictions: { country: ["pk"] } }}
@@ -43,22 +40,18 @@ export default function SearchBox({
       }: any) => (
         <Box>
           <TextField
-            {...getInputProps({
-              // placeholder: "Type address",
-            })}
+            {...getInputProps()}
             label={label}
             autoFocus={true}
-            required={required}
             type="text"
             InputProps={{ style: { fontSize: 14 } }}
             fullWidth
-            helperText={error && helperText}
             error={error}
-            // error={address?.label?.length > 0 ? null : error}
+            helperText={helperText}
           />
           <Box className={classes.dropdown}>
-            {loading && <CircularProgress />}
-            {suggestions.map((suggestion: any) => {
+            {loading && <CircularProgress size={"small"} />}
+            {suggestions.map((suggestion: any, index: number) => {
               const className = suggestion.active
                 ? "suggestion-item--active"
                 : "suggestion-item";
@@ -71,11 +64,12 @@ export default function SearchBox({
                     className,
                     style,
                   })}
+                  key={index}
                 >
                   <pre
                     style={{
                       textAlign: "left",
-                      background: "#f0f0f0",
+                      color: "black",
                       padding: 20,
                     }}
                   >

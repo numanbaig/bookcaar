@@ -36,7 +36,7 @@ const Navbar = () => {
         </Box>
 
         <Box display={"flex"} gap={5}>
-          {pages.map((page: any, index: number) => {
+          {/* {pages.map((page: any, index: number) => {
             return (
               <Box key={index}>
                 <Link
@@ -54,7 +54,7 @@ const Navbar = () => {
                 </Link>
               </Box>
             );
-          })}
+          })} */}
         </Box>
         <Box>
           <Button

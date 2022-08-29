@@ -21,9 +21,11 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useHistory } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-
 import { store } from "../../store";
-import { createUserWithEmail,ICreateUserProps } from "../../store/services/Auth";
+import {
+  createUserWithEmail,
+  ICreateUserProps,
+} from "../../store/services/Auth";
 
 const SignupSchema = Yup.object({
   name: Yup.string()
@@ -92,10 +94,10 @@ export default function Signup() {
             }}
             validationSchema={SignupSchema}
             onSubmit={(values: ICreateUserProps) => {
-              store.dispatch(createUserWithEmail(values));
+              store.dispatch(createUserWithEmail({ ...values, history }));
 
               // same shape as initial values
-              console.log(values);
+              console.log(values, "VALUESSS");
             }}
           >
             {({ errors, touched, values, setFieldValue, handleChange }) => (
