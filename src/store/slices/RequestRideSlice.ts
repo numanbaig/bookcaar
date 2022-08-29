@@ -27,7 +27,7 @@ const requestRideSlice = createSlice({
             })
             .addCase(getRequestedRideList.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.rideBids = action.payload;
+                state.rideList = action.payload;
             })
             .addCase(getRequestedRideBids.pending, (state, action) => {
                 state.isLoading = true;
