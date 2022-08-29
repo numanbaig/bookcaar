@@ -1,9 +1,9 @@
 import { Box, Container, Typography, Grid, Button } from "@mui/material";
 import Hunza from "../../assets/videos/hunza.mp4";
 import SearchBox from "../Searchbar/index";
-import Carousel from '../carousel/index'
-import  WaveSvg from '../../assets/spaceremove.svg'
-import Gallery from '../../gallery/index'
+import Carousel from "../carousel/index";
+import WaveSvg from "../../assets/spaceremove.svg";
+import Gallery from "../../gallery/index";
 import Rating from "../../components/Rating";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -13,6 +13,7 @@ import { QuestionsMock } from "../../mockData/index";
 import { makeStyles } from "@mui/styles";
 import Vehicles from '../../components/vehicle/index'
 import theme from "../../theme";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles(() => ({
   slick: {
@@ -36,6 +37,8 @@ const useStyles = makeStyles(() => ({
 
 const Home = () => {
   const classes = useStyles();
+  const state = useSelector((state) => state);
+
   const settings = {
     className: "center",
     centerMode: true,
@@ -132,10 +135,10 @@ const Home = () => {
           </Box>
         </Box>
       </section>
-      <Gallery/>
-      <Vehicles/>
+      <Carousel/>
+      <Gallery />
+      <Vehicles />
     </Container>
-
   );
 };
 
