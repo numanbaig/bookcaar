@@ -6,7 +6,7 @@ import Navbar from "../components/navbar";
 import Chat from "../pages/Chat";
 import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
-import SignUp from '../pages/Auth/Register'
+import SignUp from "../pages/Auth/Register";
 const AppRoutes = () => {
   return (
     <Router>
@@ -18,16 +18,16 @@ const AppRoutes = () => {
         <Route path={"/chat"}>
           <Chat />
         </Route>
-        <Route exact path={"/bids"}>
+        <Route path={"/bids"}>
           <Bids />
         </Route>
-        <Route exact path={"/register"}>
+        <Route path={"/register"}>
           <Register />
         </Route>
-        <Route exact path={"/login"}>
+        <Route path={"/login"}>
           <Login />
         </Route>
-        <Route exact path={"/signUp"}>
+        <Route path={"/signUp"}>
           <SignUp />
         </Route>
       </Switch>

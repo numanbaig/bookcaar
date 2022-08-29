@@ -3,11 +3,13 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import TextInput from "./Components/ChatInput";
 import { MessageLeft, MessageRight } from "./Components/Message";
+import commingSoonPic from "../../assets/Images/csoon.jpg";
 
 export default function index() {
   return (
-    <Box display="flex" justifyContent="center">
-      <Paper
+    <Box display="flex" justifyContent="center" alignItems={"center"}>
+      <img src={commingSoonPic} alt="comming soon" />
+      {/* <Paper
         sx={{
           width: "80vw",
           height: "80vh",
@@ -50,7 +52,7 @@ export default function index() {
             })}
         </Paper>
         <TextInput />
-      </Paper>
+      </Paper> */}
     </Box>
   );
 }

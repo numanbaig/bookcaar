@@ -13,12 +13,12 @@ import Logo from "../../assets/bookcar.png";
 const Navbar = () => {
   const theme = useTheme();
   const history = useHistory();
-  const pages = [
-    { page: "Home", id: 1 },
-    { page: "Events", id: 1 },
-    { page: "About us", id: 1 },
-    { page: "Contact us", id: 1 },
-  ];
+  // const pages = [
+  //   { page: "Home", id: 1 },
+  //   { page: "Events", id: 1 },
+  //   { page: "About us", id: 1 },
+  //   { page: "Contact us", id: 1 },
+  // ];
   return (
     <Container maxWidth={false} disableGutters>
       <LayoutContainer>
@@ -35,7 +35,7 @@ const Navbar = () => {
         </Box>
 
         <Box display={"flex"} gap={5}>
-          {pages.map((page: any, index: number) => {
+          {/* {pages.map((page: any, index: number) => {
             return (
               <MenuItem key={index}>
                 <Typography
@@ -52,7 +52,7 @@ const Navbar = () => {
                 </Typography>
               </MenuItem>
             );
-          })}
+          })} */}
         </Box>
         <Box>
           <Button

@@ -20,7 +20,7 @@ export default function QuiltedImageList(props: any) {
       gap={0}
       rowHeight={200}
     >
-      {props.data.map((item: any) => (
+      {props?.data?.map((item: any) => (
         <ImageListItem
           key={item.img}
           cols={item.cols || 1}
