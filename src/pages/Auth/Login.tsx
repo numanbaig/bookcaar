@@ -1,5 +1,7 @@
 import * as React from "react";
 import Button from "../../components/Button";
+import Image from '../../assets/car.jpeg'
+import logo from '../../assets/bookcar.png'
 import {
   Grid,
   Box,
@@ -34,7 +36,8 @@ export default function Register() {
   const theme = useTheme();
 
   return (
-    <Grid container component="main" sx={{ height: "100vh" }}>
+    <Box sx={{ height: "100vh" }} my='auto'>
+    <Grid container component="main" sx={{background:"black",height:"100%"}}>
       <CssBaseline />
       <Grid
         item
@@ -48,8 +51,8 @@ export default function Register() {
             t.palette.mode === "light"
               ? t.palette.grey[50]
               : t.palette.grey[900],
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: "right",
+          backgroundPosition: "100% 71%",
         }}
       />
       <Grid item xs={12} sm={6} md={6} component={Paper} elevation={6} square>
@@ -119,6 +122,7 @@ export default function Register() {
                 <Grid container>
                   <Grid item>
                     <Link
+                    sx={{cursor:"pointer"}}
                       onClick={() => history.push("/register")}
                       variant="body2"
                       sx={{ cursor: "pointer" }}
@@ -133,5 +137,6 @@ export default function Register() {
         </Box>
       </Grid>
     </Grid>
+    </Box>
   );
 }

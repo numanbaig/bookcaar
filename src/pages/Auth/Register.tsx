@@ -1,4 +1,6 @@
 import Button from "../../components/Button";
+import Image from '../../assets/Images/g6.png'
+import logo from '../../assets/bookcar.png'
 import {
   Grid,
   Box,
@@ -81,6 +83,7 @@ export default function Signup() {
         >
           <Box pb={2}>
             <img src={Logo} width="100px" />
+
           </Box>
           <Typography component="h1" variant="h5">
             Register
@@ -91,7 +94,7 @@ export default function Signup() {
               email: "",
               password: "",
               gender: "male",
-              phoneNumber: "",
+              phoneNumber: 123,
             }}
             validationSchema={SignupSchema}
             onSubmit={(values: ICreateUserProps) => {
