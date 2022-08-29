@@ -23,20 +23,20 @@ export interface ICreateUserProps {
 }
 
 const userRef = async (user: IUser) => {
-  console.log(user,'user')
-    await setDoc(doc(db, "users", `${user.uid}`), {
-      displayName: user.displayName,
-      email: user.email,
-      uid: user.uid,
-      phoneNumber: user.phoneNumber,
-      metadata: {
-        createdAt: user.metadata.createdAt,
-        creationTime: user.metadata.creationTime,
-        lastLoginAt: user.metadata.lastLoginAt,
-        lastSignInTime: user.metadata.lastSignInTime,
-      },
-    });
- 
+  console.log(user, "user");
+  await setDoc(doc(db, "users", `${user.uid}`), {
+    displayName: user.displayName,
+    email: user.email,
+    uid: user.uid,
+    photoURL: user?.photoURL,
+    phoneNumber: user.phoneNumber,
+    metadata: {
+      createdAt: user.metadata.createdAt,
+      creationTime: user.metadata.creationTime,
+      lastLoginAt: user.metadata.lastLoginAt,
+      lastSignInTime: user.metadata.lastSignInTime,
+    },
+  });
 };
 
 export const createUserWithEmail = createAsyncThunk(

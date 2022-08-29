@@ -26,8 +26,15 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { Formik } from "formik";
 import * as yup from "yup";
 import moment from "moment";
+import { useSelector } from "react-redux";
+
+import { store } from "../../store";
+import { requestRide } from "../../store/services/RequestRide";
+import { IUser } from "../../store/Interfaces/user";
 
 function Index() {
+  const user = useSelector((state) => state.user.user as IUser);
+
   const [value, setValue] = useState("2014-08-18T21:11:54");
   const [vehicle, setVehicle] = useState("2014-08-18T21:11:54");
   const [coordinates, setCoordinates] = useState("");
@@ -63,7 +70,18 @@ function Index() {
   const [rideTime, setRideTime] = React.useState("Per Day");
 
   function HandleFormSubmit(values: any) {
-    console.log(values, "valuessss");
+    store.dispatch(
+      requestRide({
+        ...values,
+        requestedUser: {
+          displayName: user.displayName,
+          userId: user.id,
+          email: user.email,
+          phoneNumber: user.phoneNumber,
+          bidedDrivers:[],
+        },
+      })
+    );
   }
 
   const handelTraveltime = (event: React.ChangeEvent<HTMLInputElement>) => {
