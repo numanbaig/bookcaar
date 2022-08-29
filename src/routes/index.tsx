@@ -11,14 +11,9 @@ import Navbar from "../components/navbar";
 import Chat from "../pages/Chat";
 import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
-<<<<<<< HEAD
 import SignUp from '../pages/Auth/Register';
 import Footer from '../components/footer/index';
 
-=======
-import Footer from "../components/footer/index";
-import SignUp from "../pages/Auth/Register";
->>>>>>> 2a00b8595bb75ba314219a7c6e4cc592fef4d238
 const AppRoutes = () => {
   const dispatch = useDispatch();
 
@@ -26,7 +21,6 @@ const AppRoutes = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       getCurrentUser(user.uid);
-    } else {
     }
   });
 

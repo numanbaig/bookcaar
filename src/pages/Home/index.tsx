@@ -41,11 +41,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Home = () => {
-<<<<<<< HEAD
-=======
-  const [activeNav, setActiveNav] = useState(0);
-
->>>>>>> 2a00b8595bb75ba314219a7c6e4cc592fef4d238
   const classes = useStyles();
   const state = useSelector((state) => state);
 
@@ -82,15 +77,6 @@ const Home = () => {
       },
     ],
   };
-
-<<<<<<< HEAD
-
-
-=======
-  useEffect(() => {
-    window.addEventListener("scroll", setActiveNav(window.scrollY));
-  }, []);
->>>>>>> 2a00b8595bb75ba314219a7c6e4cc592fef4d238
 
   return (
     <Container maxWidth={false} disableGutters>
@@ -176,11 +162,7 @@ const Home = () => {
           </Box>
         </Box>
       </section>
-<<<<<<< HEAD
       <Gallery/>
-=======
-      <Gallery />
->>>>>>> 2a00b8595bb75ba314219a7c6e4cc592fef4d238
     </Container>
   );
 };
