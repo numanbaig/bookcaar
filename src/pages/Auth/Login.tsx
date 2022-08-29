@@ -1,5 +1,7 @@
 import * as React from "react";
 import Button from "../../components/Button";
+import Image from '../../assets/car.jpeg'
+import logo from '../../assets/bookcar.png'
 import {
   Grid,
   Box,
@@ -35,7 +37,8 @@ export default function Register() {
   const theme = useTheme();
 
   return (
-    <Grid container component="main" sx={{ height: "100vh" }}>
+    <Box sx={{ height: "100vh" }} my='auto'>
+    <Grid container component="main" sx={{background:"black",height:"100%"}}>
       <CssBaseline />
       <Grid
         item
@@ -43,29 +46,29 @@ export default function Register() {
         sm={4}
         md={7}
         sx={{
-          backgroundImage: "url(https://source.unsplash.com/random)",
+          backgroundImage: `url(${Image})`,
           backgroundRepeat: "no-repeat",
           backgroundColor: (t) =>
             t.palette.mode === "light"
               ? t.palette.grey[50]
               : t.palette.grey[900],
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: "right",
+          backgroundPosition: "100% 71%",
         }}
       />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{display:"grid"}}>
         <Box
           sx={{
-            my: 8,
+            my: 'auto',
             mx: 4,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <Box>
+            <img src={logo} alt='logo' width="150px" height='auto'/>
+          </Box>
           <Typography component="h1" variant="h5">
             Register
           </Typography>
@@ -118,6 +121,7 @@ export default function Register() {
                 <Grid container>
                   <Grid item>
                     <Link
+                    sx={{cursor:"pointer"}}
                       onClick={() => history.push("/register")}
                       variant="body2"
                     >
@@ -131,5 +135,6 @@ export default function Register() {
         </Box>
       </Grid>
     </Grid>
+    </Box>
   );
 }
