@@ -11,7 +11,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    userAdded(state, action) {
+    currentUser(state, action) {
       state.user = action.payload;
     },
     userRemoved(state, action) {
@@ -26,15 +26,11 @@ const userSlice = createSlice({
       .addCase(createUserWithEmail.fulfilled, (state, action) => {
         state.isLoading = false;
       })
-      .addCase(loginWithEmail.pending, (state, action)=> {
-
-      })
-      .addCase(loginWithEmail.fulfilled, (state, action)=> {
-
-    })
+      .addCase(loginWithEmail.pending, (state, action) => {})
+      .addCase(loginWithEmail.fulfilled, (state, action) => {});
   },
 });
 
-export const { userAdded, userRemoved } = userSlice.actions;
+export const { currentUser, userRemoved } = userSlice.actions;
 
 export default userSlice.reducer;

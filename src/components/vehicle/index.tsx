@@ -11,16 +11,15 @@ import v4 from "../../assets/Images/v4.jpg";
 function ServicesGrid() {
   const classes = useStyles();
   return (
-    <div style={{ width: "100%", background: "#fff" }}>
+    <div style={{ width: "100%", background: "#fff" }} id={"Vehicles"}>
       <div className={classes.root}>
         <Box width="100%" textAlign="center" margin="30px 0px">
           <Box padding="10px 0px">
             <div>
-              {" "}
               <Typography
                 variant="h4"
                 data-aos="fade-up"
-                className={classes?.mainheading}
+                className={classes.mainheading}
               >
                 Our Vehicles
               </Typography>
@@ -34,10 +33,10 @@ function ServicesGrid() {
           sx={{ padding: "1.5rem 0" }}
         >
           {[
-            { image: premium, title: "Premium" },
-            { image: v3, title: "Premium +" },
-            { image: premiumPlus, title: "Executive" },
-            { image: v4, title: "suv (4*4)" },
+            { image: v4, title: "Economy" },
+            { image: premium, title: "Economy +" },
+            { image: v3, title: "Executive" },
+            { image: premiumPlus, title: "suv (4*4)" },
           ].map((car, i) => {
             return (
               <Grid item xs={12} sm={6} md={3}>
@@ -46,7 +45,7 @@ function ServicesGrid() {
                     {" "}
                     <img src={car.image} alt="place" className={classes.img} />
                   </Box>
-                  <Typography variant="subtitle2" color="primary">
+                  <Typography variant="h6" color="primary" fontWeight={700}>
                     {car.title}
                   </Typography>
                   <Typography className={classes.subheading}>

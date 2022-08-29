@@ -2,33 +2,55 @@ import React, { ReactNode, useContext, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import Astore from "../../assets/Images/astore.jpg";
-import Chilas from "../../assets/Images/chilas.jpg";
-import Phunder from "../../assets/Images/phunder.jpg";
-import Sikardu from "../../assets/Images/sikardu.jpg";
+import Chilas from "../../assets/Images/fm1.jpg";
+import Phunder from "../../assets/Images/fm2.jpg";
+import Sikardu from "../../assets/Images/fm3.jpg";
+import atabadLake from "../../assets/Images/fm4.jpg";
+import ladyFingre from "../../assets/Images/fm5.jpg";
+import phunder from "../../assets/Images/fm6.jpg";
 import { opacityColors } from "../../theme/opacityColors";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import PlaceIcon from "@mui/icons-material/Place";
 import { themeShadows } from "../../theme/shadows";
 
 const NavbarCarousel = () => {
   const theme = useTheme();
   const items = [
     {
-      title: "Hunza",
+      title: "Hussani Suspension Bridge",
       description: "locale.notGettingUsedToNew",
       buttonText: "locale.switchToPreviousVersion",
       image: Chilas,
     },
     {
-      title: "Sikardu",
+      title: "Rainbow lake Astore",
       description: "test",
       buttonText: "helpGuide",
       image: Phunder,
     },
     {
-      title: "Astore",
+      title: "Naltar Valley",
       description: "test",
       buttonText: "helpGuide",
       image: Sikardu,
+    },
+    {
+      title: "Passu Cones",
+      description: "locale.notGettingUsedToNew",
+      buttonText: "locale.switchToPreviousVersion",
+      image: atabadLake,
+    },
+    {
+      title: "Skardu",
+      description: "test",
+      buttonText: "helpGuide",
+      image: ladyFingre,
+    },
+    {
+      title: "Phunder",
+      description: "test",
+      buttonText: "helpGuide",
+      image: phunder,
     },
   ];
 
@@ -71,38 +93,64 @@ const Item = ({
   const theme = useTheme();
   return (
     <Box
+    id={'Top Places'}
+    my="1.5rem"
       mx="auto"
-      display='flex'
+      display="flex"
       padding="2rem"
-      flexWrap={'wrap'}
+      flexWrap={"wrap"}
       maxWidth={"80%"}
       textAlign="left"
       justifyContent={"space-around"}
     >
+      <Box display='flex' flexDirection={'column'} sx={{ width: "50%",
+            height: "40vh",}} >
         <img
           src={item.image}
           alt="Alternative text goes here as usual"
           style={{
-            width: "50%",
+            width: "100%",
             height: "40vh",
             borderRadius: "2rem",
-            border:"1px solid",
-            borderColor:opacityColors().primary,
+            border: "1px solid",
+            borderColor: opacityColors().primary,
             boxShadow: themeShadows().primary,
           }}
         />
-      <Box flex="1" marginLeft="1rem" my='auto'>
+        <Box display="flex" ml=".5rem" alignItems='center'>
+        <PlaceIcon color="primary" />
+          <Typography
+            variant="h6"
+            sx={{fontWeight: 700 }}
+          >
+            {item.title}
+          </Typography>
+        </Box>
+      </Box>
+      <Box flex="1" marginLeft="1rem" my="auto">
         <Typography variant="h4" sx={{ marginTop: theme.spacing(6) }}>
-          {item.title}
+          Top Places To Visit
         </Typography>
+
         <Typography
-          sx={{ marginTop: theme.spacing(2),marginLeft:"1rem" }}
+          sx={{ marginTop: theme.spacing(2), marginLeft: "1rem" }}
           variant="body1"
           color={theme.palette.grey[600]}
         >
-          Hunza was a princely state, bordering China to the north-east and
-          Pamir to its north-west, which continued to survive until 1974, when
-          it was finally dissolved by Zulfikar Ali Bhutto. The state borderedum 10°C and minimum 0°C.
+          <span
+            style={{
+              color: theme.palette.primary.main,
+              fontWeight: 700,
+              fontSize: "1.5rem",
+            }}
+          >
+            The{" "}
+          </span>
+          much renowned Gilgit-Baltistan is often referred to as heaven on
+          earth, enveloped in the grand Himalayas, Hindukush and the Karakoram
+          mountain ranges, this place has been a great tourist attraction for
+          many years. So what are you waiting for Book your ride Now and Avail
+          Great Discounts on multiple Hotels, Restaurants and Businesses.
         </Typography>
         <Button
           sx={{
@@ -113,7 +161,7 @@ const Item = ({
             borderRadius: "34px !important",
           }}
           variant="outlined"
-          size='large'
+          size="large"
           endIcon={<ChevronRightIcon />}
         >
           <Typography

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Bid from "./Bid";
+import Bid from "../../components/userBids";
 import { Typography, Box } from "@mui/material";
 import SearchBox from "./MyRequest";
 import { useSelector } from "react-redux";

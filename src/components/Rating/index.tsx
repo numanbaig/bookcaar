@@ -16,13 +16,13 @@ const Rating = () => {
               sx={{ width: "40px", height: "40px" }}
             />
           </div>
-          <p id="author">Bill Anderson</p>
+          <p id="author">User</p>
           <p id="job"></p>
           <p id="info">
-            Edison bulb put a bird on it humblebrag, marfa pok pok heirloom
-            fashion axe cray stumptown venmo actually seitan. VHS farm-to-table
-            schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby
-            chic.
+            Absolutely great service from the staff. Super friendly when I can
+            and picked up the car. I had a one way rental and was charged the
+            incorrect mileage at drop off location, I called this location to
+            resolve the issue and they were super helpful and quick about it
           </p>
         </article>
       </section>

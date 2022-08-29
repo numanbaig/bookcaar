@@ -1,19 +1,20 @@
 import { Box, Container, Typography, Grid, Button } from "@mui/material";
 import Hunza from "../../assets/videos/hunza.mp4";
 import SearchBox from "../Searchbar/index";
+import Carousel from "../carousel/index";
+import WaveSvg from "../../assets/spaceremove.svg";
+import Gallery from "../../gallery/index";
 import Rating from "../../components/Rating";
 import Slider from "react-slick";
-import Carousel from "../carousel";
-import WaveSvg from "../../assets/spaceremove.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FrequentQuestions from "../../components/FrequentlyAskedQuestions";
 import { QuestionsMock } from "../../mockData/index";
 import { makeStyles } from "@mui/styles";
+import Vehicles from "../../components/vehicle/index";
 import theme from "../../theme";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import Vehicles from "../../components/vehicle";
-import Gallery from "../../gallery";
 
 const useStyles = makeStyles(() => ({
   slick: {
@@ -43,6 +44,8 @@ const Home = () => {
   const [activeNav, setActiveNav] = useState(0);
 
   const classes = useStyles();
+  const state = useSelector((state) => state);
+
   const settings = {
     className: "center",
     centerMode: true,
@@ -115,7 +118,7 @@ const Home = () => {
         <Carousel />
       </section>
 
-      <section>
+      <section id={"Reviews"}>
         <Box
           sx={{ backgroundColor: "#fff" }}
           pb={3}

@@ -22,17 +22,19 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { Formik } from "formik";
 import * as yup from "yup";
 import moment from "moment";
+
 import { store } from "../../store";
-import { requestRide } from "../../store/services/RequestRide";
 import { PER_DAY } from "../../constants/bookingTypes";
-import { storeRequest } from "../../store/slices/RequestRideSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { requestRide } from "../../store/services/RequestRide";
+import { IUser } from "../../store/Interfaces/user";
+import storeRequest from "../../store/slices/RequestRideSlice";
 
 function Index() {
+  const user = useSelector((state: any) => state.user.user as IUser);
   const [bookingType, setBookingType] = React.useState("Per Day");
   const history = useHistory();
-  const user = useSelector((state: any) => state.user.user);
   const dispatch = useDispatch();
 
   const validationSchema = yup.object({
@@ -86,7 +88,18 @@ function Index() {
   function HandleFormSubmit(values: any) {
     dispatch(storeRequest(values));
     if (user) {
-      store.dispatch(requestRide(values));
+      store.dispatch(
+        requestRide({
+          ...values,
+          requestedUser: {
+            displayName: user.displayName,
+            userId: user.id,
+            email: user.email,
+            phoneNumber: user.phoneNumber,
+            bidedDrivers: [],
+          },
+        })
+      );
     } else {
       history.push("/login");
     }

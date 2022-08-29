@@ -4,6 +4,7 @@ import {
   MenuItem,
   Typography,
   Button,
+  Link,
   useTheme,
 } from "@mui/material";
 import { LayoutContainer, MoreMenu, Welcome } from "./styles";
@@ -13,12 +14,12 @@ import Logo from "../../assets/bookcar.png";
 const Navbar = () => {
   const theme = useTheme();
   const history = useHistory();
-  // const pages = [
-  //   { page: "Home", id: 1 },
-  //   { page: "Events", id: 1 },
-  //   { page: "About us", id: 1 },
-  //   { page: "Contact us", id: 1 },
-  // ];
+  const pages = [
+    { page: "Vehicles", id: 1 },
+    { page: "Top Places", id: 1 },
+    { page: "Reviews", id: 1 },
+    { page: "Gallery", id: 1 },
+  ];
   return (
     <Container maxWidth={false} disableGutters>
       <LayoutContainer>
@@ -37,8 +38,9 @@ const Navbar = () => {
         <Box display={"flex"} gap={5}>
           {/* {pages.map((page: any, index: number) => {
             return (
-              <MenuItem key={index}>
-                <Typography
+              <Box key={index}>
+                <Link
+                href={`#${page.page}`}
                   textAlign="center"
                   sx={{
                     color: "#fff",
@@ -49,8 +51,8 @@ const Navbar = () => {
                   variant="body1"
                 >
                   {page.page}
-                </Typography>
-              </MenuItem>
+                </Link>
+              </Box>
             );
           })} */}
         </Box>
