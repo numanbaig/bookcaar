@@ -72,7 +72,7 @@ export const loginWithEmail = createAsyncThunk(
     return await signInWithEmailAndPassword(auth, email, password).then(
       (userCredential) => {
         const user = userCredential.user;
-        history.push("/bids");
+        history.push("/");
         return user;
       }
     );

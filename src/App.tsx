@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import AppRoutes from "./routes";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { db } from "./Firebase/FirebaseConfig";
 import { getDoc, doc } from "firebase/firestore";
 import { currentUser } from "./store/slices/userSlice";
@@ -13,11 +13,14 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
+  onAuthStateChanged(auth, async (user) => {
     if (user) {
-      getCurrentUser(user.uid);
+      await getCurrentUser(user.uid);
     }
+    setIsLoading(false);
   });
+
+
 
   const getCurrentUser = async (id: string) => {
     try {
