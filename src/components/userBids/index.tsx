@@ -7,7 +7,15 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DriverBids from "./DriverBids";
 import { themeShadows } from "../../theme/shadows";
 import { opacityColors } from "../../theme/opacityColors";
-const Header = () => {
+import moment from "moment";
+const Header = ({
+  id,
+  pickupLocation,
+  time,
+  dropOfLocation,
+  tripType,
+  startDate,
+}: any) => {
   return (
     <Paper
       sx={{
@@ -24,7 +32,7 @@ const Header = () => {
           sx={{ marginLeft: "1rem", fontWeight: 700 }}
           color="primary"
         >
-          Pending
+          {tripType}
         </Typography>
       </Box>
       <Box display="flex">
@@ -34,7 +42,7 @@ const Header = () => {
           sx={{ marginLeft: "1rem", fontWeight: 700 }}
           color="primary"
         >
-          Location
+          {pickupLocation.label}
         </Typography>
       </Box>
       <Box display="flex">
@@ -44,7 +52,7 @@ const Header = () => {
           sx={{ marginLeft: "1rem", fontWeight: 700 }}
           color="primary"
         >
-          Location
+          {dropOfLocation.label}
         </Typography>
       </Box>
       <Box display="flex">
@@ -54,7 +62,7 @@ const Header = () => {
           sx={{ marginLeft: "1rem", fontWeight: 700 }}
           color="primary"
         >
-          10-12-2022
+          {moment(startDate).format("DD-MMMM-YYYY")}
         </Typography>
       </Box>
       <Box display="flex">
@@ -64,79 +72,41 @@ const Header = () => {
           sx={{ marginLeft: "1rem", fontWeight: 700 }}
           color="primary"
         >
-          07:13 PM
-        </Typography>
-      </Box>
-      <Box display="flex">
-        <Typography variant="subtitle1">Booking Type:</Typography>
-        <Typography
-          variant="subtitle1"
-          sx={{ marginLeft: "1rem", fontWeight: 700 }}
-          color="primary"
-        >
-          Pending
+          {time}
         </Typography>
       </Box>
     </Paper>
   );
 };
-export default function SimpleAccordion() {
+export default function SimpleAccordion({
+  id,
+  pickupLocation,
+  time,
+  dropOfLocation,
+  tripType,
+  startDate,
+  getRequestid,
+}: any) {
   return (
-    <div style={{ paddingTop: "7rem" }}>
-      <Typography sx={{ padding: "1rem" }} variant="h4">
-        User Name your Requests
-      </Typography>
-      <Accordion defaultExpanded>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Header />
-        </AccordionSummary>
-        <AccordionDetails>
-          {[
-            {
-              name: "NOMAN",
-              pickupLocation: "Gilgit",
-              time: new Date().toDateString(),
-              image:
-                'https://pluspng.com/img-png/user-png-icon-male-user-icon-512.png"',
-              status: "Active",
-              tripType: "short-rental",
-            },
-            {
-              name: "NOMAN",
-              pickupLocation: "Gilgit",
-              time: new Date().toDateString(),
-              image:
-                'https://pluspng.com/img-png/user-png-icon-male-user-icon-512.png"',
-              status: "Active",
-              tripType: "short-rental",
-            },
-            {
-              name: "NOMAN",
-              pickupLocation: "Gilgit",
-              time: new Date().toDateString(),
-              image:
-                'https://pluspng.com/img-png/user-png-icon-male-user-icon-512.png"',
-              status: "Active",
-              tripType: "short-rental",
-            },
-          ].map((item, i) => {
-            return (
-              <DriverBids
-                name={item.name}
-                pickupLocation={item.pickupLocation}
-                time={item.time}
-                image={item.image}
-                status={item.status}
-                tripType={item.tripType}
-              />
-            );
-          })}
-        </AccordionDetails>
-      </Accordion>
-    </div>
+    <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Header
+          id={id}
+          pickupLocation={pickupLocation}
+          time={time}
+          dropOfLocation={dropOfLocation}
+          tripType={tripType}
+          startDate={startDate}
+          onClick={() => getRequestid(id)}
+        />
+      </AccordionSummary>
+      <AccordionDetails>
+        <DriverBids />
+      </AccordionDetails>
+    </Accordion>
   );
 }

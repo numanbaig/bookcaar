@@ -7,4 +7,8 @@ export const store = configureStore({
     user: userReducer,
     bookRide: RequestRideSlice,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });

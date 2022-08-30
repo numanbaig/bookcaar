@@ -49,22 +49,20 @@ export const createUserWithEmail = createAsyncThunk(
     name,
     history,
   }: ICreateUserProps) => {
-    await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password,
-      phoneNumber
-    ).then((userCredential) => {
-      const user = userCredential.user;
-      history.push("/bids");
-      userRef({
-        ...user,
-        displayName: name,
-        gender: gender,
-      } as unknown as IUser);
+    await createUserWithEmailAndPassword(auth, email, password).then(
+      (userCredential) => {
+        const user = userCredential.user;
+        history.push("/bids");
+        userRef({
+          ...user,
+          displayName: name,
+          gender: gender,
+          phoneNumber: phoneNumber,
+        } as unknown as IUser);
 
-      return user;
-    });
+        return user;
+      }
+    );
   }
 );
 
@@ -74,7 +72,6 @@ export const loginWithEmail = createAsyncThunk(
     return await signInWithEmailAndPassword(auth, email, password).then(
       (userCredential) => {
         const user = userCredential.user;
-        console.log(user, "userr");
         history.push("/bids");
         return user;
       }

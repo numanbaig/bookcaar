@@ -36,7 +36,24 @@ const Navbar = () => {
           <img src={Logo} alt="logo" width="90px" height="auto" />
         </div>
 
-        <Box display={"flex"} gap={5}></Box>
+        <Box display={"flex"} gap={5}>
+          {pages.map((page: any, index: number) => {
+            return (
+              <Box key={index}>
+                <Link
+                  href={`#${page.page}`}
+                  textAlign="center"
+                  sx={{
+                    color: "#fff",
+                  }}
+                >
+                  {page.page}
+                </Link>
+              </Box>
+            );
+          })}
+        </Box>
+
         <Box>
           {!user ? (
             <Box>
@@ -72,7 +89,7 @@ const Navbar = () => {
             <IconButton
               onClick={() => {
                 store.dispatch(signOutUser());
-                location.reload()
+                location.reload();
               }}
             >
               <Box display="flex" alignItems={"center"}>
