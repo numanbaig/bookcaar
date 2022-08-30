@@ -14,11 +14,9 @@ import { db } from "../../Firebase/FirebaseConfig";
 const Header = (prop: any) => {
   const props = prop?.props;
   return (
-    <Paper
+    <Box
       sx={{
-        padding: "1rem 1rem",
-        boxShadow: themeShadows().primary,
-        border: `1px solid ${opacityColors().borderColor}`,
+        padding: "0rem 1rem",
         width: "100%",
       }}
     >
@@ -77,12 +75,12 @@ const Header = (prop: any) => {
         <Typography
           variant="subtitle1"
           sx={{ marginLeft: "1rem", fontWeight: 700 }}
-          color="primary"
+          color={props.status !== "pending" ? "primary" : "darkgrey"}
         >
           {props.status}
         </Typography>
       </Box>
-    </Paper>
+    </Box>
   );
 };
 export default function SimpleAccordion(props: any) {
@@ -113,11 +111,21 @@ export default function SimpleAccordion(props: any) {
   }, []);
 
   return (
-    <div style={{ paddingTop: "7rem" }}>
+    <div
+      style={{
+        borderRadius:"1rem",
+        margin:"2rem 0",
+        boxShadow: themeShadows().z16,
+        border: `1px solid ${opacityColors().lightHover}`,
+      }}
+    >
       <Typography sx={{ padding: "1rem" }} variant="h4">
         User Name your Requests
       </Typography>
-      <Accordion defaultExpanded>
+      <Accordion
+        defaultExpanded
+        sx={{ borderRadius: "1rem", boxShadow: themeShadows().error }}
+      >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -141,6 +149,7 @@ export default function SimpleAccordion(props: any) {
                   phoneNumber={item.phoneNumber}
                   tripType={item.tripType}
                   baggage={item.baggage}
+                  carName={""}
                 />
               );
             })

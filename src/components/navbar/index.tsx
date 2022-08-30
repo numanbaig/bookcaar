@@ -23,18 +23,18 @@ const Navbar = () => {
   const history = useHistory();
   const user = useSelector((state: any) => state.user.user as IUser);
   const pages = [
-    { page: "Vehicles", id: 1 },
-    { page: "Top Places", id: 1 },
-    { page: "Reviews", id: 1 },
-    { page: "Gallery", id: 1 },
+    { page: "Vehicles", id: 7 },
+    { page: "Top Places", id: 5 },
+    { page: "Reviews", id:6 },
+    { page: "Gallery", id: 3 },
   ];
 
   return (
     <Container maxWidth={false} disableGutters>
       <LayoutContainer>
-        <div onClick={history.push("/")} style={{ cursor: "pointer" }}>
+        <Link href={"/"} style={{ cursor: "pointer" }}>
           <img src={Logo} alt="logo" width="90px" height="auto" />
-        </div>
+        </Link>
 
         <Box display={"flex"} gap={5}>
           {pages.map((page: any, index: number) => {
@@ -52,6 +52,15 @@ const Navbar = () => {
               </Box>
             );
           })}
+              <Link
+                  href={'/bids'}
+                  textAlign="center"
+                  sx={{
+                    color: "#fff",
+                  }}
+                >
+                  My Bids
+                </Link>
         </Box>
 
         <Box>
