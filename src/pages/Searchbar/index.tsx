@@ -91,7 +91,7 @@ function Index() {
       store.dispatch(
         requestRide({
           ...values,
-          hideRiderId: "",
+          hiredRiderId: "",
           completed: false,
           requestedUser: {
             displayName: user.displayName,
