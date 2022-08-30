@@ -11,8 +11,8 @@ import Navbar from "../components/navbar";
 import Chat from "../pages/Chat";
 import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
-import SignUp from '../pages/Auth/Register';
-import Footer from '../components/footer/index';
+import SignUp from "../pages/Auth/Register";
+import Footer from "../components/footer/index";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();

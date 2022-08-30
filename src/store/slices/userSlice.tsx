@@ -26,8 +26,12 @@ const userSlice = createSlice({
       .addCase(createUserWithEmail.fulfilled, (state, action) => {
         state.isLoading = false;
       })
-      .addCase(loginWithEmail.pending, (state, action) => {})
-      .addCase(loginWithEmail.fulfilled, (state, action) => {});
+      .addCase(loginWithEmail.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(loginWithEmail.fulfilled, (state, action) => {
+        state.isLoading = false;
+      });
   },
 });
 
