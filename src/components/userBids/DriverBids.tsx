@@ -57,7 +57,6 @@ const DriversBid = ({
   const shadows = themeShadows();
 
   const handleConfirmRide = async () => {
-    console.log(completed, hiredRiderId, "hello");
     const requestRideBidsQuery = doc(db, "car-request", docId);
     try {
       if (!completed && !hiredRiderId) {
@@ -149,7 +148,6 @@ const DriversBid = ({
                     </Typography>
                   </Box>
                 </Box>
-                {console.log(tripType,"tripType")}
                 <Box display="flex" mt={".5rem"}>
                   {["full-day", "short-day"].map((type, index) => (
                     <FormControlLabel

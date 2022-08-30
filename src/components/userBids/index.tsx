@@ -31,7 +31,7 @@ const Header = (prop: any) => {
         </Typography>
       </Box>
       <Box display="flex">
-      <Typography variant="subtitle1">PickUp Location:</Typography>
+        <Typography variant="subtitle1">PickUp Location:</Typography>
         <Typography
           variant="subtitle1"
           sx={{ marginLeft: "1rem", fontWeight: 700 }}
@@ -84,7 +84,6 @@ const Header = (prop: any) => {
   );
 };
 export default function SimpleAccordion(props: any) {
-  console.log(props, "props");
   const [Bids, setBids] = useState([]);
 
   const getRequestedRideBid = async () => {
@@ -114,8 +113,8 @@ export default function SimpleAccordion(props: any) {
   return (
     <div
       style={{
-        borderRadius:"1rem",
-        margin:"2rem 0",
+        borderRadius: "1rem",
+        margin: "2rem 0",
         boxShadow: themeShadows().z16,
         border: `1px solid ${opacityColors().lightHover}`,
       }}
@@ -133,8 +132,7 @@ export default function SimpleAccordion(props: any) {
         </AccordionSummary>
         <AccordionDetails>
           {Bids.length ? (
-            Bids.map((item: any, i) => {
-              console.log(props, "item");
+            Bids?.map((item: any, i) => {
               return (
                 <DriverBids
                   docId={props.docId}
