@@ -85,7 +85,6 @@ const Header = (prop: any) => {
 };
 export default function SimpleAccordion(props: any) {
   const [Bids, setBids] = useState([]);
-
   const getRequestedRideBid = async () => {
     const requestRideBidsQuery = collection(
       db,
@@ -120,7 +119,7 @@ export default function SimpleAccordion(props: any) {
       }}
     >
       <Accordion
-        defaultExpanded
+        defaultExpanded={false}
         sx={{ borderRadius: "1rem", boxShadow: themeShadows().error }}
       >
         <AccordionSummary
