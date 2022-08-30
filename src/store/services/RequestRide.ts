@@ -5,14 +5,15 @@ import {
   setDoc,
   collection,
   where,
-  orderBy,
   onSnapshot,
+  getDocs,
   serverTimestamp,
   query,
 } from "firebase/firestore";
 import { db } from "../../Firebase/FirebaseConfig";
 import { IUser } from "../Interfaces/user";
 import { store } from "../../store";
+import { rides } from "../slices/RequestRideSlice";
 
 export interface IRequestRideInterface {
   vehicle: string;
@@ -38,37 +39,37 @@ export const requestRide = createAsyncThunk(
 export const getRequestedRideList = createAsyncThunk(
   "requestRideList",
   async (user: IUser) => {
+    let requestRideList: any[] = [];
     try {
       const requestRideQuery = query(
         requestRideRef,
-        orderBy("createdAt", "desc"),
-        where("ownerId", "==", user.id)
+        where("requestedUser.userId", "==", user.id)
       );
-      return onSnapshot(requestRideQuery, (querySnapshot) => {
-        const requestRideList: any[] = [];
-        querySnapshot.forEach((doc) => {
-          requestRideList.push({ docId: doc.id, ...doc.data() });
+      onSnapshot(requestRideQuery, (querySnapshot) => {
+        querySnapshot.forEach(async (doc) => {
+          requestRideList.push({ ...doc.data(), docId: doc.id });
         });
-        return requestRideList;
       });
     } catch (err) {
       console.error(err, "getRequestedRideList [err !]");
     }
+    return requestRideList;
   }
 );
 
-export const getRequestedRideBids = createAsyncThunk(
+const getRequestedRideBid = createAsyncThunk(
   "requestRideBids",
   async (docId: string) => {
     const requestRideBidsQuery = collection(db, "car-request", docId, "bids");
     try {
-      return onSnapshot(requestRideBidsQuery, (querySnapshot) => {
-        const requestRideBids: any[] = [];
+      const requestRideBids: any[] = [];
+
+      await onSnapshot(requestRideBidsQuery, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
           requestRideBids.push({ docId: doc.id, ...doc.data() });
         });
-        return requestRideBids;
       });
+      return requestRideBids;
     } catch (err) {
       console.error(err, "requestRideBidsQuery [err !]");
     }

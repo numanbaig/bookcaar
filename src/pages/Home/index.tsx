@@ -41,6 +41,8 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Home = () => {
+  const [activeNav, setActiveNav] = useState(0);
+
   const classes = useStyles();
   const state = useSelector((state) => state);
 
@@ -77,6 +79,10 @@ const Home = () => {
       },
     ],
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", setActiveNav(window.scrollY));
+  }, []);
 
   return (
     <Container maxWidth={false} disableGutters>
@@ -162,7 +168,7 @@ const Home = () => {
           </Box>
         </Box>
       </section>
-      <Gallery/>
+      <Gallery />
     </Container>
   );
 };

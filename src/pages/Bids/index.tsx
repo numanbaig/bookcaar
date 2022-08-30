@@ -5,13 +5,25 @@ import { useSelector } from "react-redux";
 import { store } from "../../store";
 import { requestRide } from "../../store/services/RequestRide";
 
+import useGetRequestedRideList from "../../store/hooks/useGetRequestedRideList";
+
 const BidsList = () => {
   const myRequests = useSelector((state: any) => state.bookRide.myRequests);
+  const user = useSelector((state: any) => state.user.user);
+  const { rideRequest, getRequestList } = useGetRequestedRideList();
+  // useEffect(() => {
+  //   if (myRequests.length > 0) {
+  //     store.dispatch(requestRide(myRequests[0]));
+  //   }
+  // }, []);
   useEffect(() => {
+    if (user) {
+      getRequestList(user);
+    }
     if (myRequests.length > 0) {
       store.dispatch(requestRide(myRequests[0]));
     }
-  }, []);
+  }, [myRequests, user]);
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }} margin="0rem auto">
       <Box mt="5rem">
@@ -20,45 +32,19 @@ const BidsList = () => {
             Bids by drivers
           </Typography>
         </Box>
-        {[
-          {
-            name: "NOMAN",
-            pickupLocation: "Gilgit",
-            time: new Date().toDateString(),
-            image:
-              'https://pluspng.com/img-png/user-png-icon-male-user-icon-512.png"',
-            status: "Active",
-            tripType: "short-rental",
-          },
-          {
-            name: "NOMAN",
-            pickupLocation: "Gilgit",
-            time: new Date().toDateString(),
-            image:
-              'https://pluspng.com/img-png/user-png-icon-male-user-icon-512.png"',
-            status: "Active",
-            tripType: "short-rental",
-          },
-          {
-            name: "NOMAN",
-            pickupLocation: "Gilgit",
-            time: new Date().toDateString(),
-            image:
-              'https://pluspng.com/img-png/user-png-icon-male-user-icon-512.png"',
-            status: "Active",
-            tripType: "short-rental",
-          },
-        ].map((item, index) => (
+        {rideRequest.map((item: any, index) => (
           <Box>
-            {/* <Bid
+            <Bid
               key={index}
-              name={item.name}
-              pickupLocation={item.pickupLocation}
+              tripType={item.bookingType}
+              pickupLocation={item?.pickUpLocation?.label}
+              dropOffLocation={item?.dropOfLocation?.label}
               time={item.time}
-              status={item.status}
-              image={item.image}
-              tripType={"short-rental"}
-            /> */}
+              date={item?.startDate}
+              status={"pending"}
+              docId={item.docId}
+              // image={item.image}
+            />
           </Box>
         ))}
       </Box>

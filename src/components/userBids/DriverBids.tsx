@@ -11,7 +11,6 @@ import {
   useTheme,
 } from "@mui/material";
 import Button from "../../components/Button";
-import CarImage from "../../assets/car.jpeg";
 import Divider from "@mui/material/Divider";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import WorkIcon from "@mui/icons-material/Work";
@@ -27,14 +26,23 @@ export interface BidProps {
   image: string;
   status: string;
   tripType: any;
+  amount: string;
+  seats: string;
+  phoneNumber: string;
+  baggage: string;
+  carName: string;
 }
 const Bid = ({
+  amount,
   name,
   pickupLocation,
   time,
   image,
+  seats,
   status,
+  phoneNumber,
   tripType,
+  baggage,
 }: BidProps) => {
   const theme = useTheme();
   const shadows = themeShadows();
@@ -63,7 +71,7 @@ const Bid = ({
                 objectFit: "cover",
                 maxHeight: "25vh",
               }}
-              src={CarImage}
+              src={image}
             />
           </Box>
           <Box sx={{ marginLeft: "2rem" }}>
@@ -76,7 +84,7 @@ const Bid = ({
                   fontWeight: 800,
                 }}
               >
-                Toyota Land Cruiser
+                {name}
               </Typography>
             </Box>
             <Box
@@ -96,7 +104,7 @@ const Bid = ({
                   <Box display="flex" ml="1rem">
                     <WorkIcon color="primary" />
                     <Typography color="primary" sx={{ marginLeft: ".2rem" }}>
-                      3
+                      {baggage}
                     </Typography>
                   </Box>
                   <Box display="flex" ml="1rem">
@@ -132,7 +140,7 @@ const Bid = ({
                 <Divider orientation="vertical" />
                 <Box sx={{ marginLeft: "1rem", width: "100%" }}>
                   <Typography sx={{ textAlign: "center" }}>
-                    Rs 900 <span>Per Day</span>
+                    {amount}/- <span>Per Day</span>
                   </Typography>
                   <Button
                     bgColor="primary"
@@ -141,7 +149,12 @@ const Bid = ({
                     sx={{ width: "100%", marginTop: "1rem" }}
                     onClick={() => {}}
                   >
-                    <Typography>Contact</Typography>
+                    <a
+                      style={{ textDecoration: "none", color: "white" }}
+                      href={`tel:+92${phoneNumber}`}
+                    >
+                      <Typography>Contact</Typography>
+                    </a>
                   </Button>
                   <Button
                     bgColor="primary"
