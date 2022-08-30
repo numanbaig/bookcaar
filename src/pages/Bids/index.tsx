@@ -28,9 +28,17 @@ const BidsList = () => {
     <Box sx={{ display: "flex", justifyContent: "center" }} margin="0rem auto">
       <Box mt="5rem">
         <Box pt={4} margin={"auto"}>
-          <Typography variant="h5" color="primary" pl={2} fontWeight={700}>
+          <Typography variant="h5" pl={2} fontWeight={700}>
             My Ride Requests
           </Typography>
+          <Box display='flex' alignItems={"center"} mt='1rem'>
+            <Typography variant="h5" pl={2} fontWeight={600} color='primary'>
+              {user?.displayName}
+            </Typography>
+            <Typography variant="h5" pl={1} fontWeight={600}>
+              Your Requests
+            </Typography>
+          </Box>
         </Box>
         {rideRequest.map((item: any, index) => (
           <Box>

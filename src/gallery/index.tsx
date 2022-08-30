@@ -1,6 +1,6 @@
 import React from "react";
 import "./gallery.css";
-import { Typography, Box ,useTheme} from "@mui/material";
+import { Typography, Box, useTheme } from "@mui/material";
 import image1 from "../assets/Images/g1.jpg";
 import image2 from "../assets/Images/g2.jpg";
 import image3 from "../assets/Images/g3.jpg";
@@ -15,10 +15,10 @@ import { themeShadows } from "../theme/shadows";
 import PlaceIcon from "@mui/icons-material/Place";
 
 export default function Index() {
-  const theme=useTheme()
+  const theme = useTheme();
   return (
     <Box
-    id={'Gallery'}
+      id={"Gallery"}
       className="gallery"
       maxWidth={"90%"}
       mx="auto"
@@ -28,25 +28,36 @@ export default function Index() {
     >
       <div className="heading">
         <Typography color="primary">Our gallery</Typography>
-        <Typography variant="h3" sx={{marginBottom:"1rem"}}>We record memories</Typography>
+        <Typography variant="h3" sx={{ marginBottom: "1rem" }}>
+          We record memories
+        </Typography>
       </div>
 
       <div className="box-container">
-        {[image1,image2,image3,image4,image5,image6,image7,image8,image9].map((image,i)=>{
-          return(
+        {[
+          { image: image1, location: "Gojal Gulkin" },
+          { image: image2, location: "Passu Cones" },
+          { image: image3, location: "Karim abad Fort" },
+          { image: image4, location: "Altit Fort" },
+          { image: image5, location: "Minimarg Astore" },
+          { image: image6, location: "skardu" },
+          { image: image7, location: "Shangrila Skardu" },
+          { image: image8, location: "Phunder" },
+          { image: image9, location: "Nager" },
+        ].map((image, i) => {
+          return (
             <div className="box" key={i}>
-            <img
-              src={image}
-              alt=""
-              style={{ boxShadow: themeShadows().error }}
-            />
-            <Box display={"flex"}>
-              <PlaceIcon color="primary" />
-              <Typography variant="subtitle1">Location</Typography>
-            </Box>
-          </div>
-  
-          )
+              <img
+                src={image?.image}
+                alt=""
+                style={{ boxShadow: themeShadows().error }}
+              />
+              <Box display={"flex"}>
+                <PlaceIcon color="primary" />
+                <Typography variant="subtitle1">{image.location}</Typography>
+              </Box>
+            </div>
+          );
         })}
       </div>
     </Box>

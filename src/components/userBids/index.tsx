@@ -31,7 +31,7 @@ const Header = (prop: any) => {
         </Typography>
       </Box>
       <Box display="flex">
-        <Typography variant="subtitle1">Pickup Location:</Typography>
+      <Typography variant="subtitle1">PickUp Location:</Typography>
         <Typography
           variant="subtitle1"
           sx={{ marginLeft: "1rem", fontWeight: 700 }}
@@ -119,9 +119,6 @@ export default function SimpleAccordion(props: any) {
         border: `1px solid ${opacityColors().lightHover}`,
       }}
     >
-      <Typography sx={{ padding: "1rem" }} variant="h4">
-        User Name your Requests
-      </Typography>
       <Accordion
         defaultExpanded
         sx={{ borderRadius: "1rem", boxShadow: themeShadows().error }}
