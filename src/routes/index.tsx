@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "../pages/Home";
 import Bids from "../pages/Bids/index";
+import ActiveBids from '../components/activeRides/index'
 import Private from "./PrivateGuard";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "../Firebase/FirebaseConfig";
@@ -58,6 +59,9 @@ const AppRoutes = () => {
         </Route>
         <Route path={"/bids"}>
           <Bids />
+        </Route>
+        <Route path={"/activerides"}>
+          <ActiveBids />
         </Route>
         <Route path={"/register"}>
           <Register />

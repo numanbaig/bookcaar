@@ -25,7 +25,7 @@ const Navbar = () => {
   const pages = [
     { page: "Vehicles", id: 7 },
     { page: "Top Places", id: 5 },
-    { page: "Reviews", id:6 },
+    { page: "Reviews", id: 6 },
     { page: "Gallery", id: 3 },
   ];
 
@@ -52,15 +52,24 @@ const Navbar = () => {
               </Box>
             );
           })}
-              <Link
-                  href={'/bids'}
-                  textAlign="center"
-                  sx={{
-                    color: "#fff",
-                  }}
-                >
-                  My Bids
-                </Link>
+          <Link
+            href={"/bids"}
+            textAlign="center"
+            sx={{
+              color: "#fff",
+            }}
+          >
+            My Bids
+          </Link>
+          <Link
+            href={"/activerides "}
+            textAlign="center"
+            sx={{
+              color: "#fff",
+            }}
+          >
+            Active Rides
+          </Link>
         </Box>
 
         <Box>
