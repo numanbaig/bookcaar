@@ -17,9 +17,21 @@ import {
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { opacityColors } from "../../theme/opacityColors";
 
-const CustomText = styled(TextField)(({ theme }) => ({
-  "& .MuiOutlinedInput-root": {
-    borderRadius: "50px",
+const InputWrapper = styled(Box)(({ theme }) => ({
+  '& .MuiOutlinedInput-input':{
+    border:"1px solid",
+    color:"#fff",
+    borderColor: theme.palette.primary.main,
+  },
+
+  "&:hover": {
+    backgroundColor: 'transparent',
+    borderColor: theme.palette.primary.main,
+  },
+  "&::placeholder": {
+    textOverflow: 'ellipsis !important',
+    color: "#fff",
+    borderColor: theme.palette.primary.main,
   },
 }));
 function index() {
@@ -28,7 +40,7 @@ function index() {
     <Box bgcolor={opacityColors().z2}>
       <Box className="box-container" display="flex" justifyContent={'space-around'}>
         <div>
-          <Box display="flex" p="1rem">
+          <Box display="flex" py="1rem">
             <img src={Logo} alt="bookcAar" width="50px" height="50px" />{" "}
             <Typography
               variant="h6"
@@ -157,12 +169,13 @@ function index() {
             subscribe for latest updates
           </Typography>
           <Stack padding={"1rem"} spacing={2} sx={{ display: "flex" }}>
-            <CustomText
+            <InputWrapper>
+            <TextField
               type="email"
-              value="subscribe"
-              className="btn"
-              sx={{ border: "1px solid #fff", borderRadius: "50px" }}
+              value={'ikhan.sharu977@gmail.com'}
+              onChange={(e)=>{}}
             />
+            </InputWrapper>
             <Button
               sx={{ borderRadius: "40px" }}
               variant="outlined"

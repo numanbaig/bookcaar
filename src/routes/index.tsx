@@ -1,7 +1,12 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
 import Home from "../pages/Home";
 import Bids from "../pages/Bids/index";
-import ActiveBids from '../components/activeRides/index'
+import ActiveBids from "../components/activeRides/index";
 import Private from "./PrivateGuard";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "../Firebase/FirebaseConfig";
@@ -14,6 +19,7 @@ import Register from "../pages/Auth/Register";
 import Login from "../pages/Auth/Login";
 import SignUp from "../pages/Auth/Register";
 import Footer from "../components/footer/index";
+import {Box } from "@mui/material";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -57,11 +63,17 @@ const AppRoutes = () => {
         <Route path={"/chat"}>
           <Chat />
         </Route>
+
         <Route path={"/bids"}>
-          <Bids />
+          <Box minHeight="90vh">
+            <Bids />
+          </Box>
         </Route>
         <Route path={"/activerides"}>
-          <ActiveBids />
+          <Box minHeight="90vh">
+            {" "}
+            <ActiveBids />
+          </Box>
         </Route>
         <Route path={"/register"}>
           <Register />
