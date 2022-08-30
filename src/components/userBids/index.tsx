@@ -73,7 +73,7 @@ const Header = (prop: any) => {
         </Typography>
       </Box>
       <Box display="flex">
-        <Typography variant="subtitle1">Booking Type:</Typography>
+        <Typography variant="subtitle1">Ride Status:</Typography>
         <Typography
           variant="subtitle1"
           sx={{ marginLeft: "1rem", fontWeight: 700 }}
@@ -113,11 +113,8 @@ export default function SimpleAccordion(props: any) {
   }, []);
 
   return (
-    <div style={{ paddingTop: "7rem" }}>
-      <Typography sx={{ padding: "1rem" }} variant="h4">
-        User Name your Requests
-      </Typography>
-      <Accordion defaultExpanded>
+    <div>
+      <Accordion defaultExpanded={false}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -128,7 +125,6 @@ export default function SimpleAccordion(props: any) {
         <AccordionDetails>
           {Bids.length ? (
             Bids.map((item: any, i) => {
-              console.log(item, "item");
               return (
                 <DriverBids
                   amount={item.amount}
