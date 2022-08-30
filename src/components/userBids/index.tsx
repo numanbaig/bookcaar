@@ -31,7 +31,7 @@ const Header = (prop: any) => {
         </Typography>
       </Box>
       <Box display="flex">
-      <Typography variant="subtitle1">PickUp Location:</Typography>
+        <Typography variant="subtitle1">PickUp Location:</Typography>
         <Typography
           variant="subtitle1"
           sx={{ marginLeft: "1rem", fontWeight: 700 }}
@@ -85,7 +85,6 @@ const Header = (prop: any) => {
 };
 export default function SimpleAccordion(props: any) {
   const [Bids, setBids] = useState([]);
-
   const getRequestedRideBid = async () => {
     const requestRideBidsQuery = collection(
       db,
@@ -113,14 +112,14 @@ export default function SimpleAccordion(props: any) {
   return (
     <div
       style={{
-        borderRadius:"1rem",
-        margin:"2rem 0",
+        borderRadius: "1rem",
+        margin: "2rem 0",
         boxShadow: themeShadows().z16,
         border: `1px solid ${opacityColors().lightHover}`,
       }}
     >
       <Accordion
-        defaultExpanded
+        defaultExpanded={false}
         sx={{ borderRadius: "1rem", boxShadow: themeShadows().error }}
       >
         <AccordionSummary
@@ -132,11 +131,14 @@ export default function SimpleAccordion(props: any) {
         </AccordionSummary>
         <AccordionDetails>
           {Bids.length ? (
-            Bids.map((item: any, i) => {
+            Bids?.map((item: any, i) => {
               return (
                 <DriverBids
+                  docId={props.docId}
+                  hiredRiderId={props.hiredRiderId}
+                  biderId={item.docId}
                   amount={item.amount}
-                  name={item.carName}
+                  carName={item.vehicalName}
                   pickupLocation={item.pickupLocation}
                   time={item.time}
                   image={item.carImages}
@@ -145,7 +147,7 @@ export default function SimpleAccordion(props: any) {
                   phoneNumber={item.phoneNumber}
                   tripType={item.tripType}
                   baggage={item.baggage}
-                  carName={""}
+                  completed={props.completed}
                 />
               );
             })

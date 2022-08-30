@@ -71,7 +71,6 @@ const AppRoutes = () => {
         </Route>
         <Route path={"/activerides"}>
           <Box minHeight="90vh">
-            {" "}
             <ActiveBids />
           </Box>
         </Route>

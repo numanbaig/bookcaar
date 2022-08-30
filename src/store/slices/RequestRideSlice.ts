@@ -8,8 +8,8 @@ import {
 
 const initialState = {
     isLoading: false,
-    rideList: [],
-    myRequests: [],
+    rideList: [] as any,
+    myRequests: [] as any,
 };
 const requestRideSlice = createSlice({
     name: "requestRide",
@@ -34,7 +34,6 @@ const requestRideSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(getRequestedRideList.fulfilled, (state, action) => {
-                console.log(action.payload, 'payload');
                 state.isLoading = false;
                 state.rideList = action.payload;
             })

@@ -5,7 +5,7 @@ import {
   MenuItem,
   Typography,
   Button,
-  Link,
+  Link as MuiLink,
   useTheme,
   IconButton,
 } from "@mui/material";
@@ -17,6 +17,7 @@ import { IUser } from "../../store/Interfaces/user";
 import Logo from "../../assets/bookcar.png";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { store } from "../../store";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -32,15 +33,15 @@ const Navbar = () => {
   return (
     <Container maxWidth={false} disableGutters>
       <LayoutContainer>
-        <Link href={"/"} style={{ cursor: "pointer" }}>
+        <div onClick={() => history.push("/")} style={{ cursor: "pointer" }}>
           <img src={Logo} alt="logo" width="90px" height="auto" />
-        </Link>
+        </div>
 
         <Box display={"flex"} gap={5}>
           {pages.map((page: any, index: number) => {
             return (
               <Box key={index}>
-                <Link
+                <MuiLink
                   href={`#${page.page}`}
                   textAlign="center"
                   sx={{
@@ -48,28 +49,30 @@ const Navbar = () => {
                   }}
                 >
                   {page.page}
-                </Link>
+                </MuiLink>
               </Box>
             );
           })}
-          <Link
-            href={"/bids"}
-            textAlign="center"
-            sx={{
-              color: "#fff",
-            }}
-          >
-            My Bids
-          </Link>
-          <Link
-            href={"/activerides "}
-            textAlign="center"
-            sx={{
-              color: "#fff",
-            }}
-          >
-            Active Rides
-          </Link>
+          <Box key={"1"}>
+            <Link
+              to={"/bids"}
+              style={{
+                color: "#fff",
+              }}
+            >
+              My Ride Requests
+            </Link>
+          </Box>
+          <Box>
+            <Link
+              to={"/activerides"}
+              style={{
+                color: "#fff",
+              }}
+            >
+              Active Rides
+            </Link>
+          </Box>
         </Box>
 
         <Box>

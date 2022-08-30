@@ -37,8 +37,12 @@ const InputWrapper = styled(Box)(({ theme }) => ({
 function index() {
   const theme = useTheme();
   return (
-    <Box bgcolor={opacityColors().z2}>
-      <Box className="box-container" display="flex" justifyContent={'space-around'}>
+    <Box bgcolor={opacityColors().z2} mt={1}>
+      <Box
+        className="box-container"
+        display="flex"
+        justifyContent={"space-around"}
+      >
         <div>
           <Box display="flex" py="1rem">
             <img src={Logo} alt="bookcAar" width="50px" height="50px" />{" "}
@@ -140,7 +144,7 @@ function index() {
                     className="logo"
                     color={theme.palette.primary.contrastText}
                     sx={{
-                      transition: '3s ease-in-out',
+                      transition: "3s ease-in-out",
                       marginLeft: "0rem",
                       "&:hover": {
                         color: theme.palette.primary.main,
