@@ -84,6 +84,7 @@ const Header = (prop: any) => {
   );
 };
 export default function SimpleAccordion(props: any) {
+  console.log(props, "props");
   const [Bids, setBids] = useState([]);
 
   const getRequestedRideBid = async () => {
@@ -133,10 +134,14 @@ export default function SimpleAccordion(props: any) {
         <AccordionDetails>
           {Bids.length ? (
             Bids.map((item: any, i) => {
+              console.log(props, "item");
               return (
                 <DriverBids
+                  docId={props.docId}
+                  hiredRiderId={props.hiredRiderId}
+                  biderId={item.docId}
                   amount={item.amount}
-                  name={item.carName}
+                  carName={item.vehicalName}
                   pickupLocation={item.pickupLocation}
                   time={item.time}
                   image={item.carImages}
@@ -145,7 +150,7 @@ export default function SimpleAccordion(props: any) {
                   phoneNumber={item.phoneNumber}
                   tripType={item.tripType}
                   baggage={item.baggage}
-                  carName={""}
+                  completed={props.completed}
                 />
               );
             })

@@ -10,6 +10,8 @@ import {
   Radio,
   useTheme,
 } from "@mui/material";
+import { db } from "../../Firebase/FirebaseConfig";
+import { updateDoc, doc } from "firebase/firestore";
 import Button from "../../components/Button";
 import Divider from "@mui/material/Divider";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
@@ -20,7 +22,6 @@ import { themeShadows } from "../../theme/shadows";
 import { opacityColors } from "../../theme/opacityColors";
 import { useSelector } from "react-redux";
 export interface BidProps {
-  name: string;
   pickupLocation: string;
   time: string;
   image: string;
@@ -31,10 +32,15 @@ export interface BidProps {
   phoneNumber: string;
   baggage: string;
   carName: string;
+  docId: string;
+  biderId: string;
+  completed: boolean;
+  hiredRiderId: string;
 }
-const Bid = ({
+const DriversBid = ({
   amount,
-  name,
+  docId,
+  biderId,
   pickupLocation,
   time,
   image,
@@ -43,9 +49,31 @@ const Bid = ({
   phoneNumber,
   tripType,
   baggage,
+  carName,
+  completed,
+  hiredRiderId,
 }: BidProps) => {
   const theme = useTheme();
   const shadows = themeShadows();
+
+  const handleConfirmRide = async () => {
+    console.log(completed, hiredRiderId, "hello");
+    const requestRideBidsQuery = doc(db, "car-request", docId);
+    try {
+      if (!completed && !hiredRiderId) {
+        await updateDoc(requestRideBidsQuery, {
+          hiredRiderId: biderId,
+        });
+      } else {
+        await updateDoc(requestRideBidsQuery, {
+          completed: false,
+          hiredRiderId: "",
+        });
+      }
+    } catch (err) {
+      console.log(err, "err");
+    }
+  };
 
   return (
     <Box
@@ -84,7 +112,7 @@ const Bid = ({
                   fontWeight: 800,
                 }}
               >
-                {name}
+                {carName}
               </Typography>
             </Box>
             <Box
@@ -121,10 +149,11 @@ const Bid = ({
                     </Typography>
                   </Box>
                 </Box>
+                {console.log(tripType,"tripType")}
                 <Box display="flex" mt={".5rem"}>
                   {["full-day", "short-day"].map((type, index) => (
                     <FormControlLabel
-                      value={type}
+                      value={tripType}
                       key={index}
                       control={<Radio />}
                       label={type}
@@ -156,14 +185,15 @@ const Bid = ({
                       <Typography>Contact</Typography>
                     </a>
                   </Button>
+
                   <Button
                     bgColor="primary"
                     size="small"
                     variant="contained"
                     sx={{ width: "100%", marginTop: "1rem" }}
-                    onClick={() => {}}
+                    onClick={() => handleConfirmRide()}
                   >
-                    <Typography>Confirm</Typography>
+                    {completed !== true && !hiredRiderId ? "Confirm" : "Cancel"}
                   </Button>
                 </Box>
               </Box>
@@ -175,4 +205,4 @@ const Bid = ({
   );
 };
 
-export default Bid;
+export default DriversBid;

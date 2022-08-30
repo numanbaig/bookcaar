@@ -32,9 +32,9 @@ const Navbar = () => {
   return (
     <Container maxWidth={false} disableGutters>
       <LayoutContainer>
-        <Link href={"/"} style={{ cursor: "pointer" }}>
+        <div onClick={() => history.push("/")} style={{ cursor: "pointer" }}>
           <img src={Logo} alt="logo" width="90px" height="auto" />
-        </Link>
+        </div>
 
         <Box display={"flex"} gap={5}>
           {pages.map((page: any, index: number) => {

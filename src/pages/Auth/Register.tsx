@@ -99,8 +99,6 @@ export default function Signup() {
             onSubmit={(values: ICreateUserProps) => {
               store.dispatch(createUserWithEmail({ ...values, history }));
 
-              // same shape as initial values
-              console.log(values, "VALUESSS");
             }}
           >
             {({ errors, touched, values, setFieldValue, handleChange }) => (

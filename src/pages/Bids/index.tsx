@@ -40,21 +40,31 @@ const BidsList = () => {
             </Typography>
           </Box>
         </Box>
-        {rideRequest.map((item: any, index) => (
-          <Box>
-            <Bid
-              key={index}
-              tripType={item.bookingType}
-              pickupLocation={item?.pickUpLocation?.label}
-              dropOffLocation={item?.dropOfLocation?.label}
-              time={item.time}
-              date={item?.startDate}
-              status={"pending"}
-              docId={item.docId}
-              // image={item.image}
-            />
-          </Box>
-        ))}
+        {rideRequest.map((item: any, index) => {
+          const status =
+            item.completed === true && item.hiredRiderId
+              ? "Completed"
+              : item.completed !== true && item.hiredRiderId
+              ? "Active"
+              : "pending";
+          return (
+            <Box>
+              <Bid
+                key={index}
+                tripType={item.bookingType}
+                pickupLocation={item?.pickUpLocation?.label}
+                dropOffLocation={item?.dropOfLocation?.label}
+                time={item.time}
+                date={item?.startDate}
+                status={status}
+                docId={item.docId}
+                completed={item.completed}
+                hiredRiderId={item.hiredRiderId}
+                // image={item.image}
+              />
+            </Box>
+          );
+        })}
       </Box>
     </Box>
   );
