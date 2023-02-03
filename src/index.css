@@ -4,6 +4,13 @@
   padding: 0;
   scroll-behavior: smooth;
 }
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -14,6 +21,4 @@
   -webkit-text-size-adjust: 100%;
 
 }
-::-webkit-scrollbar {
-  display: none;
-}
+

@@ -18,18 +18,18 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { opacityColors } from "../../theme/opacityColors";
 
 const InputWrapper = styled(Box)(({ theme }) => ({
-  '& .MuiOutlinedInput-input':{
-    border:"1px solid",
-    color:"#fff",
+  "& .MuiOutlinedInput-input": {
+    border: "1px solid",
+    color: "#fff",
     borderColor: theme.palette.primary.main,
   },
 
   "&:hover": {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     borderColor: theme.palette.primary.main,
   },
   "&::placeholder": {
-    textOverflow: 'ellipsis !important',
+    textOverflow: "ellipsis !important",
     color: "#fff",
     borderColor: theme.palette.primary.main,
   },
@@ -87,6 +87,7 @@ function index() {
             {["district", "gallery", "reviews", "vehicle"].map((link, i) => {
               return (
                 <Box
+                  key={i}
                   display="flex"
                   sx={{ cursor: "pointer" }}
                   alignItems={"center"}
@@ -134,6 +135,7 @@ function index() {
             ].map((link, i) => {
               return (
                 <Box
+                  key={i}
                   display="flex"
                   sx={{ cursor: "pointer" }}
                   alignItems={"center"}
@@ -174,11 +176,11 @@ function index() {
           </Typography>
           <Stack padding={"1rem"} spacing={2} sx={{ display: "flex" }}>
             <InputWrapper>
-            <TextField
-              type="email"
-              value={'ikhan.sharu977@gmail.com'}
-              onChange={(e)=>{}}
-            />
+              <TextField
+                type="email"
+                value={"ikhan.sharu977@gmail.com"}
+                onChange={(e) => {}}
+              />
             </InputWrapper>
             <Button
               sx={{ borderRadius: "40px" }}

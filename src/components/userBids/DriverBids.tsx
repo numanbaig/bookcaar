@@ -56,6 +56,8 @@ const DriversBid = ({
   const theme = useTheme();
   const shadows = themeShadows();
 
+  console.log(tripType, "tripType")
+
   const handleConfirmRide = async () => {
     const requestRideBidsQuery = doc(db, "car-request", docId);
     try {
@@ -149,14 +151,13 @@ const DriversBid = ({
                   </Box>
                 </Box>
                 <Box display="flex" mt={".5rem"}>
-                  {["full-day", "short-day"].map((type, index) => (
+                  
                     <FormControlLabel
-                      value={tripType}
-                      key={index}
-                      control={<Radio />}
-                      label={type}
+                      value={"full-day"}
+                      key={"1"}
+                      control={<Radio checked />}
+                      label={"full-day"}
                     />
-                  ))}
                 </Box>
               </Box>
               <Box

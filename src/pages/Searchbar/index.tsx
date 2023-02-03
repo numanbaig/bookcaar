@@ -252,7 +252,11 @@ function Index() {
                           "EXECUTIVE",
                           "SUV (4x4)",
                         ].map((veh, i) => {
-                          return <MenuItem value={veh}>{veh}</MenuItem>;
+                          return (
+                            <MenuItem key={i} value={veh}>
+                              {veh}
+                            </MenuItem>
+                          );
                         })}
                       </Select>
                       {props.touched.vehicalType &&
@@ -267,6 +271,7 @@ function Index() {
                       label="From Date"
                       inputFormat="MM/DD/YYYY"
                       value={props.values.startDate}
+                      minDate={new Date()}
                       onChange={(e) =>
                         props.setFieldValue(
                           "startDate",

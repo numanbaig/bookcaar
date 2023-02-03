@@ -53,26 +53,30 @@ const Navbar = () => {
               </Box>
             );
           })}
-          <Box key={"1"}>
-            <Link
-              to={"/bids"}
-              style={{
-                color: "#fff",
-              }}
-            >
-              My Ride Requests
-            </Link>
-          </Box>
-          <Box>
-            <Link
-              to={"/activerides"}
-              style={{
-                color: "#fff",
-              }}
-            >
-              Active Rides
-            </Link>
-          </Box>
+          {user && (
+            <>
+              <Box key={"1"}>
+                <Link
+                  to={"/bids"}
+                  style={{
+                    color: "#fff",
+                  }}
+                >
+                  My Ride Requests
+                </Link>
+              </Box>
+              <Box>
+                <Link
+                  to={"/activerides"}
+                  style={{
+                    color: "#fff",
+                  }}
+                >
+                  Active Rides
+                </Link>
+              </Box>
+            </>
+          )}
         </Box>
 
         <Box>
@@ -107,24 +111,34 @@ const Navbar = () => {
               </Button>
             </Box>
           ) : (
-            <IconButton
-              onClick={() => {
-                store.dispatch(signOutUser());
-                location.reload();
-              }}
-            >
-              <Box display="flex" alignItems={"center"}>
-                <Typography
-                  variant="h6"
-                  color="#fff"
-                  sx={{ marginRight: ".5rem" }}
-                >
-                  {" "}
-                  Logout
-                </Typography>
-                <LogoutIcon color="primary" />
-              </Box>
-            </IconButton>
+            <Box display="flex" alignItems="center">
+              <Typography
+                variant="h6"
+                color="primary"
+                sx={{ marginRight: ".5rem" }}
+              >
+                hi! {user.displayName}
+              </Typography>
+
+              <IconButton
+                onClick={() => {
+                  store.dispatch(signOutUser());
+                  location.reload();
+                }}
+              >
+                <Box display="flex" alignItems={"center"}>
+                  <Typography
+                    variant="h6"
+                    color="#fff"
+                    sx={{ marginRight: ".5rem" }}
+                  >
+                    {" "}
+                    Logout
+                  </Typography>
+                  <LogoutIcon color="primary" />
+                </Box>
+              </IconButton>
+            </Box>
           )}
         </Box>
       </LayoutContainer>

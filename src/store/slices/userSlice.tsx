@@ -6,6 +6,7 @@ import { createUserWithEmail, loginWithEmail } from "../services/Auth";
 const initialState = {
   user: null,
   isLoading: false,
+  errorMessage: null,
 };
 const userSlice = createSlice({
   name: "user",
@@ -22,15 +23,25 @@ const userSlice = createSlice({
     builder
       .addCase(createUserWithEmail.pending, (state, action) => {
         state.isLoading = true;
+        state.errorMessage = null;
       })
       .addCase(createUserWithEmail.fulfilled, (state, action) => {
         state.isLoading = false;
       })
+      .addCase(createUserWithEmail.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errorMessage = action.error.message;
+      })
       .addCase(loginWithEmail.pending, (state, action) => {
         state.isLoading = true;
+        state.errorMessage = null;
       })
       .addCase(loginWithEmail.fulfilled, (state, action) => {
         state.isLoading = false;
+      })
+      .addCase(loginWithEmail.rejected, (state, action) => {
+        state.isLoading = false;
+          state.errorMessage = action.error.message;
       });
   },
 });

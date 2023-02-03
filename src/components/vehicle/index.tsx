@@ -38,7 +38,7 @@ function ServicesGrid() {
             { image: premiumPlus, title: "suv (4*4)" },
           ].map((car, i) => {
             return (
-              <Grid item xs={12} sm={6} md={3}>
+              <Grid key={i} item xs={12} sm={6} md={3}>
                 <Paper className={classes.paper}>
                   <Box width="100%" textAlign="center">
                     {" "}

@@ -134,6 +134,7 @@ export default function SimpleAccordion(props: any) {
             Bids?.map((item: any, i) => {
               return (
                 <DriverBids
+                key={i}
                   docId={props.docId}
                   hiredRiderId={props.hiredRiderId}
                   biderId={item.docId}

@@ -2,7 +2,6 @@ import { Box, Container, Typography, Grid, Button } from "@mui/material";
 import Hunza from "../../assets/videos/hunza.mp4";
 import SearchBox from "../Searchbar/index";
 import Carousel from "../carousel/index";
-import WaveSvg from "../../assets/spaceremove.svg";
 import Gallery from "../../gallery/index";
 import Rating from "../../components/Rating";
 import Slider from "react-slick";
@@ -105,7 +104,7 @@ const Home = () => {
           sx={{
             background: "#fff",
             position: "absolute",
-            bottom: "-39px",
+            bottom: "-120px",
             width: "100%",
           }}
           pt={5}

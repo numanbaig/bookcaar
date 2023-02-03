@@ -18,6 +18,7 @@ import {
   FormHelperText,
 } from "@mui/material";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { store } from "../../store";
@@ -27,6 +28,7 @@ import {
 } from "../../store/services/Auth";
 import Logo from "../../assets/bookcar.png";
 import SideImage from "../../assets/Images/sideImage.webp";
+import Toast from "../../components/Toast"
 
 const SignupSchema = Yup.object({
   name: Yup.string()
@@ -49,6 +51,7 @@ const SignupSchema = Yup.object({
 export default function Signup() {
   const history = useHistory();
   const theme = useTheme();
+  const user = useSelector((state) => state.user);
 
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
@@ -98,7 +101,6 @@ export default function Signup() {
             validationSchema={SignupSchema}
             onSubmit={(values: ICreateUserProps) => {
               store.dispatch(createUserWithEmail({ ...values, history }));
-
             }}
           >
             {({ errors, touched, values, setFieldValue, handleChange }) => (
@@ -193,6 +195,7 @@ export default function Signup() {
                 <Button
                   type="submit"
                   size="full"
+                  disabled={user.isLoading}
                   variant="contained"
                   bgColor="primary"
                   sx={{ mt: 3, mb: 2 }}
@@ -213,6 +216,7 @@ export default function Signup() {
               </Form>
             )}
           </Formik>
+          {user.errorMessage && <Toast title={user.errorMessage} />}
         </Box>
       </Grid>
     </Grid>

@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { auth } from "../../Firebase/FirebaseConfig";
 import { doc, setDoc, query } from "firebase/firestore";
 import { db } from "../../Firebase/FirebaseConfig";
+import Toast from "../../components/Toast";
 import {
   signInWithEmailAndPassword,
   signOut,
@@ -41,41 +42,53 @@ const userRef = async (user: IUser) => {
 
 export const createUserWithEmail = createAsyncThunk(
   "users/createUserWithEmail",
-  async ({
-    email,
-    password,
-    phoneNumber,
-    gender,
-    name,
-    history,
-  }: ICreateUserProps) => {
-    await createUserWithEmailAndPassword(auth, email, password).then(
-      (userCredential) => {
-        const user = userCredential.user;
-        history.push("/bids");
-        userRef({
-          ...user,
-          displayName: name,
-          gender: gender,
-          phoneNumber: phoneNumber,
-        } as unknown as IUser);
+  async (
+    { email, password, phoneNumber, gender, name, history }: ICreateUserProps,
+    { rejectWithValue }
+  ) => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password).then(
+        (userCredential) => {
+          const user = userCredential.user;
+          history.push("/");
+          userRef({
+            ...user,
+            displayName: name,
+            gender: gender,
+            phoneNumber: phoneNumber,
+          } as unknown as IUser);
 
-        return user;
+          return user;
+        }
+      );
+    } catch (err: any) {
+      if (!err.response) {
+        throw err;
       }
-    );
+
+      return rejectWithValue(err.response.data);
+    }
   }
 );
 
 export const loginWithEmail = createAsyncThunk(
   "users/loginWithEmail",
-  async ({ email, password, history }: ILoginProps) => {
-    return await signInWithEmailAndPassword(auth, email, password).then(
-      (userCredential) => {
-        const user = userCredential.user;
-        history.push("/");
-        return user;
+  async ({ email, password, history }: ILoginProps, { rejectWithValue }) => {
+    try {
+      return await signInWithEmailAndPassword(auth, email, password).then(
+        (userCredential) => {
+          const user = userCredential.user;
+          history.push("/");
+          return user;
+        }
+      );
+    } catch (err: any) {
+      if (!err.response) {
+        throw err;
       }
-    );
+
+      return rejectWithValue(err.response.data);
+    }
   }
 );
 

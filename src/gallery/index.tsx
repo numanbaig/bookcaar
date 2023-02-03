@@ -46,7 +46,7 @@ export default function Index() {
           { image: image9, location: "Nager" },
         ].map((image, i) => {
           return (
-            <div className="box" key={i}>
+            <div key={i} className="box" key={i}>
               <img
                 src={image?.image}
                 alt=""

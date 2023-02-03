@@ -8,6 +8,7 @@ export default createTheme({
   opacityColors,
   //@ts-ignore
   shadows: themeShadows,
+  shadows: Array(25).fill('none') as Shadows,
   breakpoints: {
     values: {
       xs: 0,
